@@ -2,7 +2,7 @@
 
 *Human-made, for Easy Work, Simply Done*
 
-**Version 1.4.0 · 2026-07-15 · License: [CC BY-NC-SA 4.0](LICENSE.md) · Changes: [CHANGELOG.md](CHANGELOG.md)**
+**Version 1.4.1 · 2026-08-13 · License: [CC BY-NC-SA 4.0](LICENSE.md) · Changes: [CHANGELOG.md](CHANGELOG.md)**
 
 A model-agnostic working prompt for decision making and risk management under uncertainty, tuned for frontier-class models.
 
