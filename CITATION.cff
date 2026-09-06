@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you cite this work, please use the metadata below."
+title: "Risk-Informed Decision Making and Continuous Risk Management"
+authors:
+  - family-names: "Paik"
+    given-names: "Son-U Michael"
+version: 1.4.2
+date-released: "2026-09-06"
+license: CC-BY-NC-SA-4.0
+repository-code: "https://github.com/rolldabones/risk-informed-decision-making-prompt"
+abstract: "Continuous risk-informed decision making under uncertainty; auditable work product."

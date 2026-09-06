@@ -2,7 +2,7 @@
 
 *Human-made, for Easy Work, Simply Done*
 
-**Version 1.4.1 · 2026-08-13 · License: [CC BY-NC-SA 4.0](LICENSE.md) · Changes: [CHANGELOG.md](CHANGELOG.md)**
+**Version 1.4.2 · 2026-09-06 · License: [CC BY-NC-SA 4.0](LICENSE.md) · Changes: [CHANGELOG.md](CHANGELOG.md)**
 
 A model-agnostic working prompt for decision making and risk management under uncertainty, tuned for frontier-class models.
 
@@ -27,6 +27,12 @@ Nearest neighbors:
 - [RedCap-00](https://github.com/rolldabones/RedCap-00): tests whether five critical operational moves would execute within 72 hours under disruption; its blockers and breakpoints are Phase B inputs here
 - [master-prompt-for-in-house-legal-and-compliance](https://github.com/rolldabones/master-prompt-for-in-house-legal-and-compliance): the sibling working prompt for legal and compliance matters, built on the same provenance, evidence-tiering and required-close conventions
 - [grc](https://github.com/rolldabones/grc): the capability model where a decision's objectives, risks and tolerances originate; element A4 runs assessment at program level
+
+## How to Cite
+
+> Paik, Son-U Michael. *Risk-Informed Decision Making and Continuous Risk Management*, v1.4.2. GRC Solutions Korea, 2026. https://github.com/rolldabones/risk-informed-decision-making-prompt
+
+A machine-readable citation is in [CITATION.cff](CITATION.cff).
 
 ## License
 
