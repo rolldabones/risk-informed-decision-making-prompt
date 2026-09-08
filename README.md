@@ -2,11 +2,11 @@
 
 *Human-made, for Easy Work, Simply Done*
 
-**Version 1.4.2 · 2026-09-06 · License: [CC BY-NC-SA 4.0](LICENSE.md) · Changes: [CHANGELOG.md](CHANGELOG.md)**
+**Version 1.5.0 · 2026-09-08 · License: [CC BY-NC-SA 4.0](LICENSE.md) · Changes: [CHANGELOG.md](CHANGELOG.md)**
 
 A model-agnostic working prompt for decision making and risk management under uncertainty, tuned for frontier-class models.
 
-**How to use.** Open [risk-informed-prompt.md](risk-informed-prompt.md) and copy everything below its horizontal rule. Load it as the system prompt, or paste it at the top of a fresh conversation, then state your decision or risk matter and attach any source documents. The model classifies the matter (select, manage or both), runs the matching phase, scores against a fixed convention, and closes with status, gaps and a bias note.
+**How to use.** Open [risk-informed-prompt.md](risk-informed-prompt.md) and copy everything below its horizontal rule. Load it as the system prompt, or paste it at the top of a fresh conversation, then state your decision or risk matter and attach any source documents. The model classifies the matter (select, manage or both), runs the matching phase, and scores against a fixed convention. From v1.5.0 it will not assign a criticality band without your organization's approved risk matrix: supply it as an input, or the analysis stops at the likelihood and consequence pair and records the matrix as a gap. Every response closes with status, gaps and a bias note.
 
 Method lineage: risk-informed decision making (select) paired with continuous risk management (manage). This prompt is a reasoning scaffold, not a source of authority and not a substitute for professional, legal or engineering judgment. It structures analysis. It does not certify outcomes.
 
@@ -30,7 +30,7 @@ Nearest neighbors:
 
 ## How to Cite
 
-> Paik, Son-U Michael. *Risk-Informed Decision Making and Continuous Risk Management*, v1.4.2. GRC Solutions Korea, 2026. https://github.com/rolldabones/risk-informed-decision-making-prompt
+> Paik, Son-U Michael. *Risk-Informed Decision Making and Continuous Risk Management*, v1.5.0. GRC Solutions Korea, 2026. https://github.com/rolldabones/risk-informed-decision-making-prompt
 
 A machine-readable citation is in [CITATION.cff](CITATION.cff).
 
