@@ -2,6 +2,14 @@
 
 All notable changes to this repository are documented here. Versioning follows [Semantic Versioning](https://semver.org/). The README and this file version in lockstep; prior versions are superseded, never silently overwritten.
 
+## v1.5.1 (2026-10-17)
+
+Patch. Session T3 of the whole-account review of 15 October 2026 (doc section 8; reviewer report 13, items C1 and C2). **Amendment note, 17 October 2026 (KST):** the working prompt is re-versioned 1.5.0 to 1.5.1 for punctuation and spelling only. No rule, threshold, band, template or required output changed.
+
+- Seventeen serial commas removed from `risk-informed-prompt.md`, the instrument that states the house style it now keeps, and one from the README's How to use paragraph.
+- "Judgemental" and "Modelling" in the uncertainty-type table corrected to "Judgmental" and "Modeling", matching "modeling" two rows below.
+- Shipped entries below are left as written (ruling 7 of 15 October 2026). The half-open band boundaries and the sample run are session T5's.
+
 ## v1.5.0 (2026-09-08)
 
 The instrument required a criticality band it never defined, and now requires the matrix that defines one. **Minor, not patch:** this changes what the instrument requires of its user. An analysis that ran to completion under v1.4.2 with an invented band will, under v1.5.0, stop at the likelihood and consequence pair and report a gap. That is a change in required input and in output, not in wording.
