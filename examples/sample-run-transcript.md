@@ -1,0 +1,468 @@
+# Sample Run: a Generated Run That Failed Its Case
+
+**Generated run, not an exemplar.** This is the output of one logged test run, reproduced so a reader can see what the prompt produces on a fully supplied matter. It is not a model answer to copy. The run **failed** its case on two named elements, and both are marked below. The matter is fictional: every company, name, figure and document is invented.
+
+| Field | Entry |
+| --- | --- |
+| Prompt | [risk-informed-prompt.md](../risk-informed-prompt.md) v1.6.0, loaded as everything below its horizontal rule (SHA-256 `978a7594bc005b442f15c72300d03c06a5fa475448d88fc643ea14b9c0fe9251`) |
+| Model | `claude-opus-5-5`, Anthropic API, system prompt, no tools, max_tokens 64,000 |
+| Run | T5, case RI-01, 18 October 2026 (KST); log and verdicts in [tests.md](../tests.md) |
+| Scorer | `claude-sonnet-5-5`, a different model. LLM scoring is developer testing, not independent assurance |
+| Verdict | **FAIL** on two elements |
+| Source | The transcript [evidence/transcripts-2026-10-18-T5/RI-01.md](../evidence/transcripts-2026-10-18-T5/RI-01.md), SHA-256 of the harness output `2a0f4caa7c4d7e75d11100b49901ff726029c5780f993032786b105abc4039ca` |
+
+**Where it failed.**
+
+1. **Register row R-02a, Tolerance column.** The cell reads "Within on its own at the point estimate ... Not robust: **Exceeds** at the upper credible level (40%) and in aggregate (X-1)". The register format allows one of Within, Exceeds or `Unknown/Insufficient data`. The session review reads this as an instrument defect: the format does not say whether the cell tests the risk alone or with the risks that share its requirement (see [tests.md](../tests.md), Known defects).
+2. **Rows R-03 and R-04, Uncertainty and Timeframe columns.** The cells read "n/a (not scored)" and give a timeframe event with no Short, Not short or Unknown label. Both risks are marked not valid under B2, and the prompt applies those tests to valid risks only, so the session review records this element as a case defect, not a model departure.
+
+Everything else the case tested held: the Provenance block with the Tolerance in force line, the fourteen register columns in order, 33 percent read as level 3 and 10 percent as level 2, the matrix arithmetic, escalation only where both conditions were recorded, the Bias Check labels, the Pre-send Verification statement and the Required Close.
+
+**How to read what follows.** The input is the user turn exactly as sent. The output is the model's first reply exactly as returned, with nothing edited, including its spellings and the closing line it added after OUTCOME. The second turn of the run, "Analysis complete above.", is omitted here and kept in the transcript.
+
+## The input (user turn, verbatim)
+
+```text
+Fictional matter for a test run; every name, figure and document is invented.
+
+Company: Corvane Cold Chain Co., Ltd., a refrigerated warehousing and distribution company operating three warehouses in Busan with 140 temperature-controlled zones.
+
+Decision: choose the platform that replaces our end-of-life temperature monitoring system before peak season, then manage the risks of implementing it. Decision-maker: the Chief Operating Officer, who holds budget authority up to KRW 2.5 billion under the delegation of authority policy DOA-03 (version of 1 July 2026).
+
+Requirements:
+R1. Excursion detection: an alarm within 5 minutes of any zone leaving its set range (lower is better).
+R2. Cutover complete by 1 December 2026 (earlier is better).
+R3. Three-year total cost of ownership (lower is better).
+R4. Temperature records: no loss of any record from the last 24 months during migration.
+Imposed constraints: C1, temperature records are retained for 24 months (source: company quality policy QA-07, version of 3 March 2026); C2, total spend at or under KRW 2.5 billion (source: DOA-03).
+
+Tolerances: R1, at the 95th percentile no more than 2 of 140 zones exceed 5 minutes; R2, cutover at the P80 date on or before 1 December 2026; R3, three-year cost at the 90th-percentile forecast at or under KRW 1.8 billion; R4, zero records lost.
+
+Alternatives:
+A. Upgrade the current vendor's platform (Vendor K). Signed quote of 2 October 2026: KRW 1.45 billion three-year cost; 90th-percentile forecast KRW 1.62 billion (our finance team's model). Vendor K's migration tool was used at our two other sites in 2025 with no record lost (our audit records). Detection latency in our 2025 site acceptance test: 95th percentile 3.8 minutes. Cutover plan: six weeks from 19 October 2026.
+B. Move to a new vendor's cloud platform (Vendor M). Signed quote: KRW 1.30 billion; 90th-percentile forecast KRW 1.95 billion, because the number of sensors to replace is uncertain (finance model). Pilot of 20 gateways over four hours on 9 October 2026: 3 gateways in the -25 C freezer zone dropped connection (our pilot log). Vendor M states its migration tool has not been used on records older than 12 months (email from Vendor M's project lead, 10 October 2026).
+C. Keep the current system and add manual temperature checks every two hours. The current vendor ends support on 31 December 2026 (vendor notice of 1 August 2026).
+
+Risk matrix in force: the Corvane Enterprise Risk Matrix, version of 1 April 2026, approved by the Risk Committee. Likelihood levels 1 to 5 and consequence levels 1 to 5, as in your scoring convention. Band by the product of the two levels: 1 to 4 Low, 5 to 9 Medium, 10 to 15 High, 16 to 25 Critical. The matrix states no other combination rule.
+
+Horizon: through 31 December 2026. The risk register is reviewed every two weeks; the next scheduled review is 2 November 2026. Analysis date: 18 October 2026, Asia/Seoul.
+
+Known implementation facts:
+- Vendor K's installer has confirmed two installation crews for the cutover window; the cutover plan assumes three (installer's email, 15 October 2026). Vendor K's project manager estimates a 33 percent probability that cutover slips past 1 December 2026 if only two crews are available. No other estimate exists.
+- Vendor K's firmware release 4.2, needed for the freezer-zone sensors, must be ordered by 25 October 2026 to arrive before cutover (Vendor K's order terms). Our operations lead estimates a 10 percent probability that the firmware fails our acceptance test, based on the 2025 rollouts at our other two sites, where one of ten firmware lots failed (our site records).
+
+Stakes: High (food-safety exposure and the end-of-support date). Run the full analysis.
+```
+
+## The output (model reply, verbatim)
+
+# Corvane Cold Chain: Temperature Monitoring Platform Replacement (Test Run, Fictional Matter)
+
+## PROVENANCE
+
+* **Date and time of analysis:** 18 October 2026 (a Sunday), Asia/Seoul (KST, UTC+9). Time of day was not supplied: `Unknown/Insufficient data`.
+* **Inputs relied on:** the user's matter statement of 18 Oct 2026, which summarises the documents in the Evidence Register (D-01 to D-20). No source document was inspected directly. Every Fact is tiered by the strength of its underlying source as described by the user.
+* **Analyst:** Claude (Anthropic). The model version is not exposed in this session: `Unknown/Insufficient data`.
+* **Matter classification:** BOTH (see First Move).
+* **Stakes band:** HIGH. The basis is the food-safety exposure (a non-recoverable domain) and a fixed end-of-support date of 31 Dec 2026. The user set the band and it meets the HIGH criteria. No numeric thresholds are pinned.
+* **Risk matrix in force:** Corvane Enterprise Risk Matrix, version of 1 April 2026, approved by the Risk Committee.
+  * Likelihood and consequence levels are 1 to 5, as in the default scoring convention.
+  * Bands are set by the product of the two levels: 1–4 Low, 5–9 Medium, 10–15 High, 16–25 Critical.
+  * The matrix states no other combination rule, so the default escalation rule applies.
+* **Tolerance in force:** carried from A5, as supplied by the user.
+
+| Requirement | Tolerance in force |
+| --- | --- |
+| R1 | At the 95th percentile, no more than 2 of 140 zones exceed 5 minutes |
+| R2 | P80 cutover date on or before 1 Dec 2026 |
+| R3 | 3-year cost at the P90 forecast ≤ KRW 1.8 bn |
+| R4 | Zero records lost |
+
+**Notation:**
+* `[F1]`, `[F2]`, `[F3]` mark a Fact, tiered, with its Evidence Register ID.
+* `[AS-n]` marks an Assumption.
+* `[I]` marks an Inference, traced to the IDs cited beside it.
+
+---
+
+## FIRST MOVE
+
+This matter is **BOTH**: the COO must select a replacement platform (Phase A), and the selected platform's implementation risks must then be managed (Phase B). Phase A's surviving and residual risks seed the Phase B register.
+
+---
+
+## EVIDENCE REGISTER
+
+| ID | Fact | Tier | Note |
+| --- | --- | --- | --- |
+| D-01 | Vendor K signed quote of 2 Oct 2026: KRW 1.45 bn over three years | F1 | Signed quote |
+| D-02 | Finance model P90 for A: KRW 1.62 bn | F2 | Internal model output; mean not supplied |
+| D-03 | Vendor K migration tool used at two other Corvane sites in 2025 with no record lost | F1 | Audit records; n = 2 |
+| D-04 | 2025 site acceptance test: aggregate P95 detection latency of 3.8 min | F1 | Direct measurement at other sites. No per-zone breakdown supplied |
+| D-05 | Vendor K cutover plan: six weeks from Mon 19 Oct 2026, assuming three crews | F2 | Vendor plan. As a forecast it is weaker than F2 |
+| D-06 | Vendor M signed quote: KRW 1.30 bn | F1 | |
+| D-07 | Finance model P90 for B: KRW 1.95 bn, driven by an uncertain sensor-replacement count | F2 | Model output |
+| D-08 | Pilot log of 9 Oct 2026: 20 gateways over 4 hours; 3 gateways in the −25 °C freezer zone dropped connection | F1 | Small sample. Drop durations, number of freezer gateways and zones per gateway not supplied |
+| D-09 | Vendor M email of 10 Oct 2026: migration tool not used on records older than 12 months | F3 | Single source. It discloses absence of evidence and says nothing about efficacy |
+| D-10 | Current vendor ends support on 31 Dec 2026 (notice of 1 Aug 2026) | F1 | Primary notice from the issuing party |
+| D-11 | Installer email of 15 Oct 2026: two crews confirmed; the plan assumes three | F3 | Single source, but it states a shortfall against the installer's own interest |
+| D-12 | Vendor K PM: 33% probability that cutover slips past 1 Dec with two crews. No other estimate exists | F3 | Single estimate with no range, made by the vendor about its own schedule |
+| D-13 | Vendor K order terms: firmware 4.2, needed for freezer-zone sensors, must be ordered by 25 Oct to arrive before cutover | F1 | Contractual terms |
+| D-14 | 2025 site records: 1 of 10 firmware lots failed Corvane acceptance | F1 | |
+| D-15 | Operations lead: 10% probability that 4.2 fails acceptance, based on D-14 | F3 | Expert judgment from a base rate |
+| D-16 | DOA-03 (1 Jul 2026): COO budget authority up to KRW 2.5 bn. This is constraint C2 | F1 | |
+| D-17 | QA-07 (3 Mar 2026): 24-month retention of temperature records. This is constraint C1 | F1 | |
+| D-18 | Risk matrix as stated in Provenance | F1 | |
+| D-19 | Requirements R1–R4, tolerances, horizon, review schedule, analysis date | F1 | The organisation's own definitions, authoritative for this analysis |
+| D-20 | Three Busan warehouses with 140 temperature-controlled zones | F2 | User statement, not document-backed |
+
+**Assumptions**
+
+* **AS-1:** The replacement scope is the 140 zones stated. This is an Ambiguity: D-03 refers to "two other sites", which may mean part of the estate already runs Vendor K's newer platform.
+* **AS-2:** Working reading of the R1 tolerance:
+  * for each zone, take the 95th-percentile alarm latency across test excursions;
+  * R1 is met if no more than 2 zones exceed 5 minutes.
+* **AS-3:** C2 "total spend" is measured on the same three-year basis as R3.
+* **AS-4:** The R-01 (crews) and R-02 (firmware) departures are independent.
+* **AS-5:** An acceptance failure of firmware 4.2 delays freezer-zone cutover past 1 Dec. This is the conservative case for aggregation.
+* **AS-6:** The Watch trigger of a cumulative shortfall of 5 or more zones is proposed by the analyst and needs owner confirmation.
+* **AS-7:** Consequence levels are the analyst's judgment, because the matrix gives no consequence descriptors per requirement.
+* **AS-8:** The current system keeps operating, with support, until 31 Dec 2026 and can serve as a fallback in that window.
+* **AS-9:** For the capacity cross-check only, cutover work is crew-limited and the crews are equally productive.
+
+---
+
+# PHASE A: SELECT
+
+## A1. Frame
+
+* **Decision:** choose the platform that replaces Corvane's end-of-life temperature monitoring system for 140 zones before peak season [F1 D-19].
+* **Decision-maker:** the COO, with budget authority up to KRW 2.5 bn under DOA-03 [F1 D-16]. All three alternatives fall within this authority at the forecasts supplied [I from D-02, D-07].
+* **Decision timing [I from D-05, D-13]:** the Vendor K cutover is planned to start tomorrow (Mon 19 Oct), and firmware 4.2 must be ordered by 25 Oct. In practice the selection is due now.
+
+**Stakeholders**
+* **Internal:** COO, operations, quality (the QA-07 owner), finance, IT, warehouse staff (who would carry the manual checks in C).
+* **External:** Vendor K, which is also the current vendor [I: A is "upgrade the current vendor's platform" and C keeps the current system whose vendor ends support]; Vendor M; the installer.
+* **Materially affected:** customers whose goods are stored; downstream consumers (food safety); food-safety regulators [I]. Specific regulatory obligations: `Unknown/Insufficient data`.
+
+**Performance domains at risk**
+
+| Domain | Exposure | Non-recoverable? |
+| --- | --- | --- |
+| Safety | Undetected excursion leading to spoiled product reaching consumers | **Yes** [I] |
+| Technical / quality | Detection latency (R1); record integrity (R4) | Record loss: **Yes** [I]. A lost record cannot be recreated |
+| Cost | R3; C2 | No |
+| Schedule | R2; end of support on 31 Dec [F1 D-10] | Becomes non-recoverable if zones run unsupported [I] |
+| Legal / regulatory | C1 retention; any statutory retention: `Unknown/Insufficient data` | Potentially yes |
+| Ethical / reputational | Consequence of any food-safety incident | Reputational harm is hard to reverse [I] |
+
+## A2. Measures and Constraints
+
+**Measures** [F1 D-19]
+
+| Measure | Direction of goodness |
+| --- | --- |
+| R1 excursion alarm latency | Lower is better |
+| R2 cutover completion date | Earlier is better |
+| R3 three-year TCO | Lower is better |
+| R4 records lost in migration | Lower is better (zero required) |
+
+**Imposed constraints**
+* C1: 24-month record retention [F1 D-17].
+* C2: total spend at or under KRW 2.5 bn [F1 D-16; AS-3].
+
+**Cannot be specified**
+* Peak-season start date: `Unknown/Insufficient data`. This is Endpoint uncertainty, and 1 Dec is taken as the operative deadline.
+* Any statutory retention period: `Unknown/Insufficient data`.
+
+## A3. Alternatives
+
+| Alt | Definition | Defining assumptions |
+| --- | --- | --- |
+| A | Upgrade to Vendor K's platform | Six-week cutover from 19 Oct with three crews [F2 D-05]; firmware 4.2 for freezer sensors [F1 D-13] |
+| B | Vendor M cloud platform | Sensor-replacement count unresolved [F2 D-07]; no cutover plan supplied: `Unknown/Insufficient data` |
+| C | Keep the current system and add manual checks every 2 hours | Support ends 31 Dec 2026 [F1 D-10]; no cutover at all |
+
+**Downselects:** none.
+* **Infeasibility:** no alternative is shown to breach C1 or C2 on the evidence.
+  * B's P90 of KRW 1.95 bn is under 2.5 bn, though its tail above P90 is unknown.
+  * B's handling of 12–24-month records is unproven but not shown to fail.
+  * C's cost is unknown.
+* **Dominance:** no alternative is worse on every measure.
+  * B has the lowest signed quote.
+  * C has no migration exposure on R4.
+
+All three proceed to A4.
+
+## A4. Analysis
+
+**Method and rigor rationale.** Rigor is limited by subject maturity: there are no distributions, only point figures and two P90s. The methods used are:
+* operating experience (D-03, D-04, D-14);
+* testing (D-08);
+* vendor and finance estimates (D-02, D-07, D-12);
+* simple first-order arithmetic.
+
+A higher-rigor model, such as a schedule simulation, would add false precision without per-task duration data. Uncertainty is therefore characterised as bounded qualitative ranges, except for firmware, where a binomial interval is defensible.
+
+**Estimates per measure**
+
+| Measure | A: Vendor K | B: Vendor M | C: Status quo + manual |
+| --- | --- | --- | --- |
+| R1 | Aggregate P95 of 3.8 min [F1 D-04], from other sites and not broken down per zone. The tolerance test under AS-2 is `Unknown/Insufficient data` [I]. Freezer zones depend on firmware 4.2 | 3 of 20 gateways dropped in the freezer zone within 4 hours [F1 D-08]. While a gateway is down, its zones cannot alarm [I]. The evidence points against R1; at tolerance it is `Unknown/Insufficient data` | Current system latency: `Unknown/Insufficient data`. A 2-hour manual interval cannot meet 5 minutes on its own [I]. After 31 Dec, a system fault cannot be repaired by the vendor [I from D-10] |
+| R2 | Plan ends about 30 Nov, leaving roughly 1 day of float [I from D-05]. P(slip) is 33% with two crews [F3 D-12], so P(on time) is about 67%. The three-crew value is `Unknown/Insufficient data` | No plan supplied: `Unknown/Insufficient data` | Fails by construction: there is no cutover [I] |
+| R3 | Quote KRW 1.45 bn [F1 D-01]; P90 KRW 1.62 bn [F2 D-02] | Quote KRW 1.30 bn [F1 D-06]; P90 KRW 1.95 bn [F2 D-07] | `Unknown/Insufficient data`. Manual labour is not costed, and a replacement is still needed later [I] |
+| R4 | 2 of 2 migrations with no loss [F1 D-03]. For n = 2, the 95% upper bound on per-migration loss probability is 1 − 0.05^(1/2) ≈ 78% [I, computation]. This is weak statistical evidence even though it is direct experience | No use on records older than 12 months [F3 D-09], so half the C1 window is unproven [I] | No migration within the horizon, so no migration loss. Record access after support ends: `Unknown/Insufficient data` |
+
+**Capacity cross-check for A's R2.** Under AS-9, two crews deliver 2/3 of planned capacity. Six weeks × 3/2 = nine weeks, ending about **21 Dec 2026** [I]. That is well past 1 Dec and close to the end-of-support date. The vendor PM's 33% implicitly assumes the work is not purely crew-limited. The discrepancy is unexplained and is a Research item (R-01b).
+
+**Sensitivity to the top three input assumptions**
+
+1. **A's slip probability with three crews (unknown).**
+   * A meets R2 only if this is at or below about 11%, once firmware risk is included (see X-1).
+   * Above that, A fails R2.
+   * The ranking does not change, because neither B nor C has demonstrated R2.
+   * What changes is whether *any* alternative meets all tolerances.
+2. **B's sensor-replacement count (drives the P90 of 1.95 bn).**
+   * If resolved at the low end, B's P90 could fall below 1.8 bn and B would pass R3.
+   * A would then lead only on evidence for R1, R4 and R2.
+   * A over B holds unless B demonstrates freezer connectivity and migration of records older than 12 months. No evidence was supplied that either can be done before 1 Dec [I].
+3. **Firmware 4.2 acceptance probability.**
+   * The credible range is about 1.8–40% (R-02).
+   * At the upper end, A fails R2 even with three crews.
+   * The ranking does not change, for the same reason as item 1.
+
+**Credibility of the analysis**
+
+Confidence would **rise** with:
+* per-zone latency data at this site;
+* written two-crew and three-crew slip estimates with ranges;
+* an independent schedule estimate;
+* the finance models' means and distributions;
+* B's extended freezer pilot and drop durations.
+
+Confidence would **fall** if:
+* the 2025 acceptance-test configuration differs materially from this site, for example in freezer share or sensor generation;
+* the finance model has not been independently reviewed.
+
+## A5. Commitments and Tolerances
+
+All alternatives are compared against the same tolerances, as stated in Provenance.
+
+| Alt | R1 (≤ 2 zones > 5 min at P95) | R2 (P80 ≤ 1 Dec) | R3 (P90 ≤ KRW 1.8 bn) | R4 (zero lost) |
+| --- | --- | --- | --- | --- |
+| A | Not demonstrated. Aggregate evidence is favourable [F1 D-04; I] | **Exceeds** at present. P(on time) ≈ 67% with two crews, about 60% including firmware risk (X-1) | **Within**: 1.62 bn | Within on 2 of 2 history; zero loss not provable [I] |
+| B | Evidence against [F1 D-08]. `Unknown/Insufficient data` at tolerance | `Unknown/Insufficient data` | **Exceeds**: 1.95 bn | Unproven for 12–24-month records [F3 D-09] |
+| C | **Fails** after 31 Dec [I]; unknown before | **Fails** (no cutover) [I] | `Unknown/Insufficient data` | Within, during the horizon |
+
+**Mean versus tail**
+* **R3:** B is cheapest at the signed quote (1.30 bn against A's 1.45 bn) and dearest at P90 (1.95 bn against 1.62 bn). A quote is not a mean, and the finance models' means were not supplied (`Unknown/Insufficient data`).
+* **R2:** A's central plan date is about 30 Nov, but its tail carries a P(slip) of 33% or more.
+
+**No alternative currently meets all four tolerances.**
+
+## A6. Deliberate and Select
+
+**Contending alternatives:** A and B.
+* C is eliminated because it fails R2 by construction and fails R1 once support ends [I from D-10].
+
+**Recommendation: Alternative A (Vendor K upgrade), conditional.** A does **not** currently meet the R2 tolerance. The COO should select A and, in the same decision, either:
+* (a) fund schedule recovery, beginning with a third crew (R-01a); or
+* (b) have the exceedance explicitly accepted by whoever owns the R2 tolerance. That owner is `Unknown/Insufficient data`.
+
+**Rationale**
+1. A is the only alternative within the R3 tolerance [F1 D-01; F2 D-02].
+2. A is the only one with direct F1 operating evidence on R1 and R4 [D-03, D-04].
+3. A's R2 shortfall has an identifiable and actionable driver, the crew count [F3 D-11].
+4. B's shortfalls are spread across three requirements and none has a supplied path to closure before 1 Dec:
+   * an R3 exceedance;
+   * adverse R1 pilot evidence;
+   * unproven R4 for records older than 12 months [I].
+
+**Bias Check (at recommendation)**
+
+| # | Bias | Result |
+| --- | --- | --- |
+| 1 | Anchoring | Live risk, countered by comparing cost at P90 rather than at the signed quotes |
+| 2 | Status quo | Live risk, countered by applying identical tolerances and declaring A's R2 exceedance rather than waiving it |
+| 3 | Sunk cost | Live risk, countered by excluding prior Vendor K spend and counting forward cost only |
+| 4 | Confirmation | Live risk, not yet countered. The favourable evidence for A comes from Corvane's own prior Vendor K rollouts, and no disconfirming search (for example, other Vendor K customers) has been done |
+| 5 | Framing | Live risk, countered by presenting B's cost both as its attractive quote and its P90 |
+| 6 | Overconfidence | Live risk, countered by the 0-of-2 upper bound for R4, the Wilson interval for firmware and the widened slip range |
+| 7 | Recallability | Live risk, countered by treating B's vivid gateway drops as a 20-gateway, 4-hour sample and not as a rate |
+| 8 | Base-rate neglect | Live risk, not yet countered. There is no reference class for comparable monitoring-platform cutovers |
+| 9 | Optimism / planning fallacy | Live risk, not yet countered. The six-week plan with about 1 day of float, and its slip estimate, both come from the vendor |
+| 10 | Groupthink | Live risk, not yet countered. Both P90 forecasts come from a single team's model with no documented independent review |
+
+**Conditions that reopen this decision**
+* The three-crew slip estimate exceeds about 11%, or a third crew cannot be confirmed by 23 Oct.
+* Firmware 4.2 fails acceptance and the replacement lead time runs past 1 Dec, or the failure proves release-wide.
+* The per-zone acceptance test shows more than 2 zones over 5 minutes at P95.
+* A's P90 cost is revised above KRW 1.8 bn, for example by third-crew cost against 0.18 bn of headroom.
+* A verified backup of the 24-month records cannot be confirmed before migration (R-03).
+* Vendor K offers support for the current system beyond 31 Dec, which changes C's R1 profile.
+
+**Carry-forward:** Alternative A's risks seed Phase B as R-01 to R-04.
+
+---
+
+# PHASE B: MANAGE (Alternative A)
+
+## Scoring convention applied
+
+* **Likelihood levels:** default half-open bands.
+  * 33% falls on the lower bound of **Possible (3)**.
+  * 10% falls on the lower bound of **Unlikely (2)**.
+* **Consequence levels:** default labels, scored by analyst judgment (AS-7).
+* **Band:** the matrix product rule. The matrix has no other combination rule, so the default applies: escalate one band when uncertainty is High **and** the timeframe is Short.
+* **Short timeframe:** the action point falls before the next review on 2 Nov 2026.
+
+## B1–B3 and B5: Register
+
+**Horizon:** through 31 Dec 2026. **Matrix in force:** Corvane Enterprise Risk Matrix v. 1 Apr 2026, product rule with default escalation. **Next scheduled review:** Mon 2 Nov 2026, then every two weeks (16 Nov, 30 Nov, 14 Dec, 28 Dec).
+
+| ID | Risk statement | Valid | Likelihood | Consequence | Basis | Uncertainty | Timeframe | Criticality | Tolerance | Driver | Disposition | Owner | Track |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| R-01a | Given that Vendor K's installer has confirmed two installation crews against the three that the six-week cutover plan assumes, there is a possibility of cutover running past 1 December 2026 adversely impacting the migration of the 140 temperature-controlled zones to the new platform, leading to failure of R2 (cutover complete by 1 December 2026), with zones entering peak season on the end-of-life system or part-migrated. | Yes | 3 Possible (33% sits on the lower bound) [F3 D-12]. Credible range 2–5: 2 because the point sits on the boundary with no range given; 5 because the capacity cross-check gives about 21 Dec [I, AS-9]. Horizon: to 1 Dec 2026 | 4 Major, range 3–4. Most affected: R2. R1 is also affected through prolonged dual running [I] | L: F3 (D-11, D-12), Inference. C: Inference (AS-7) | **High**. Limb (a): likelihood range 2–5 spans 4 levels. Limb (b): likelihood rests on F3 only and consequence on Inference only | 25 Oct 2026, the end of cutover week 1. Plan float is about 1 day [I from D-05]. **Short** (before 2 Nov) | Cell L3 × C4 = **12 → High**. **Escalated to Critical** because uncertainty is High and the timeframe is Short | **Exceeds**. P(on time) = 1 − 0.33 = 67%, below the 80% required | Crew count: 2 confirmed against 3 planned | **Mitigate (prevents):** secure a third qualified crew in writing by 23 Oct, with COO funding approval. **Residual:** L `Unknown/Insufficient data`, as no three-crew estimate exists. The target is ≤ 11% (X-1). If met, 2 × 4 = 8, Medium, before the escalation re-test. C stays at 4. **Secondary:** (i) installation defects from a crew unfamiliar with Vendor K hardware (R1); (ii) third-crew cost against the KRW 0.18 bn P90 headroom (R3); (iii) more zones in transition at once, opening transient R1 gaps | COO (funding decision); Corvane cutover project manager (execution). Names: `Unknown/Insufficient data` | Written third-crew confirmation by 23 Oct. **Trigger:** if not confirmed by 23 Oct, Elevate to the COO for alternative recovery (overtime, resequencing) and reopen A6 |
+| R-01b | (see R-01a) | Yes | as R-01a | as R-01a | as R-01a | as R-01a | 21 Oct 2026 (estimate needed before the 23 Oct crew decision). **Short** | as R-01a | as R-01a | Evidence base of the slip estimate: a single F3 point from the vendor's own PM, with no range, no three-crew figure, no slip magnitude, and unreconciled with the 9-week capacity arithmetic | **Research** (epistemic and judgmental): obtain written two-crew and three-crew slip estimates with ranges and slip-magnitude distributions from Vendor K's PM, plus an independent estimate from the Corvane operations lead. Reconcile both with the capacity arithmetic | Corvane cutover project manager | Due 21 Oct. **Trigger:** if the three-crew estimate exceeds 11%, or any credible slip reaches 31 Dec, reopen B3 and A6 |
+| R-01c | (see R-01a) | Yes | as R-01a | as R-01a | as R-01a | as R-01a | as R-01a | as R-01a | as R-01a | Schedule float of about 1 day [I from D-05] | **Watch.** *Parameter:* cumulative zones cut over against the plan profile, with freezer zones tracked separately. *Schedule:* weekly every Friday from 23 Oct, plus each register review. *Trigger:* a cumulative shortfall of 5 or more zones (AS-6), or any freezer group behind plan. *Contingency:* COO decision on additional crew or overtime; reopen Analyze | Corvane cutover project manager | Weekly progress report. The triggers above reopen B3 and B4 |
+| R-02a | Given that firmware release 4.2 is required for the freezer-zone sensors and must pass Corvane's acceptance test, and that one of ten firmware lots failed that test in the 2025 rollouts, there is a possibility of the delivered 4.2 lot failing acceptance adversely impacting cutover of the freezer-zone sensors, leading to failure of R2 for the freezer zones and to those zones lacking R1-compliant alarm coverage on the new platform. | Yes | 2 Unlikely (10% sits on the lower bound) [F3 D-15]. Credible range 1–3: the 95% Wilson interval for 1 of 10 is about 1.8–40% [I from F1 D-14] | 4 Major, range 3–4. Most affected: R2. R1 is also affected (freezer zones) | L: F1 (D-14), F3 (D-15), Inference (base rate carried over to release 4.2). C: Inference (AS-7) | **High**. Limb (a): likelihood range 1–3 spans 3 levels. Limb (b): consequence rests on Inference only | 25 Oct 2026 order deadline [F1 D-13]. **Short** | Cell L2 × C4 = **8 → Medium**. **Escalated to High** because uncertainty is High and the timeframe is Short | Within on its own at the point estimate (10% against a 20% slip budget). Not robust: **Exceeds** at the upper credible level (40%) and in aggregate (X-1) | Lot acceptance outcome (aleatory lot-to-lot variation) | **Mitigate (reduces consequence; an aleatory lot failure cannot be prevented):** order 4.2 immediately and no later than 25 Oct; schedule freezer zones after acceptance; keep freezer zones on the current system, which is supported to 31 Dec [F1 D-10, AS-8], until an accepted lot is installed; pre-agree a replacement-lot procedure. **Residual:** L 2 (1–3), unchanged. C 3 if a replacement lot can be accepted before 1 Dec, otherwise 4 (conditional on R-02b). That gives 2 × 3 = 6, Medium, before an escalation re-test on 2 Nov. **Secondary:** freezer-zone work bunches late and adds to R-01 pressure; dual-system alarm routing errors (R1) | Corvane cutover project manager (order); operations lead (acceptance test) | Order confirmation, delivery date, acceptance result. **Triggers:** order not confirmed by 23 Oct, or acceptance failure → Elevate to the COO and reopen B3 |
+| R-02b | (see R-02a) | Yes | as R-02a | as R-02a | as R-02a | as R-02a | 23 Oct 2026. **Short** | as R-02a | as R-02a | Replacement-lot lead time, and whether failures are lot-specific or release-wide (a release-wide failure is a common cause) | **Research** (epistemic): written answer from Vendor K on (i) replacement lead time and (ii) the failure mode history of release 4.2 | Corvane cutover project manager | Due 23 Oct. **Trigger:** if lead time pushes freezer cutover past 1 Dec, or failures are release-wide, reopen B3 and A6 |
+| R-03 | Given that the Vendor K migration tool's zero-loss record rests on two migrations and that no verified, restorable backup of the 24-month record set is documented in the inputs, there is a possibility of temperature records being lost or corrupted during migration adversely impacting the 24-month record set required by QA-07, leading to failure of R4 (zero records lost) and of constraint C1. | **No.** Q3 unknown: whether an adequate contingency (a verified backup) exists. Q4 unknown for the backup clause | n/a. Not scored pending revalidation. For reference, the 0-of-2 upper bound is about 78% [I] | n/a. Not scored. It would score against R4, a non-recoverable domain | F1 (D-03, D-17); backup status `Unknown/Insufficient data` | n/a (not scored) | Start of record migration. Date: `Unknown/Insufficient data` | n/a. Invalid pending revision; not ranked | `Unknown/Insufficient data` | Existence of a verified, restore-tested backup | n/a. The row fails B2 and must be revised before migration begins (Next Step 5) | QA-07 policy owner. Name: `Unknown/Insufficient data` | Restore-test evidence. **Trigger:** if the migration start date arrives with no verified restore, recommend holding migration and Elevate to the COO |
+| R-04 | Given that the only latency evidence for Vendor K's platform is an aggregate 95th-percentile figure of 3.8 minutes from the 2025 site acceptance test, not a per-zone figure for these 140 zones, and that the freezer-zone sensors require firmware 4.2, there is a possibility of more than 2 of the 140 zones exceeding 5 minutes at the 95th percentile adversely impacting excursion alarms, leading to failure of R1. | **No.** Q5 unknown: there are no per-zone or this-site data to establish that the departure is credible | n/a (not scored) | n/a (not scored). It would score against R1 | F1 (D-04, D-13); per-zone data `Unknown/Insufficient data` | n/a | Go-live of the first zone group (about 19–25 Oct) [I]. Precise date: `Unknown/Insufficient data` | n/a. Invalid pending revision; not ranked | `Unknown/Insufficient data` | Per-zone latency evidence | n/a. Revise after the per-zone acceptance test (Next Step 6) | Operations lead | Per-zone acceptance test before each group goes live. **Trigger:** more than 2 zones over 5 minutes at P95 → hold go-live of that group, rescore and reopen A6 |
+
+**Ranking:** R-01 (Critical), then R-02 (High). R-03 and R-04 are unranked because they are invalid pending revision. Both still carry potentially non-recoverable exposure, so their revalidation is time-critical.
+
+**Posture:** Accept is **not** recorded. The posture is not within tolerance while R-01 exceeds the R2 tolerance and X-1 sits at about 60% on-time against an 80% requirement.
+* If R-01a cannot be secured by 23 Oct, the exceedance is **Elevated** to the COO and to the R2 tolerance owner (`Unknown/Insufficient data`).
+* The question for them is: accept cutover at P(on time) of about 60–67%, or authorise further recovery spend?
+
+**Top combined exposures (B3 Aggregate)**
+
+* **X-1 (R-01 + R-02 → R2)** [I, AS-4, AS-5]:
+  * P(on time) = 0.67 × 0.90 ≈ **0.60**, so P(slip) ≈ 40%, against a tolerance of 20% or less.
+  * For A to meet R2, R-01a's residual slip probability must satisfy (1 − p) × 0.90 ≥ 0.80, which gives **p ≤ 11.1%**.
+  * Firmware risk alone uses half of the 20% slip budget.
+  * If a firmware failure does not always cause slip (because of the fallback), the combined figure lies between 33% and 40%.
+* **X-2 (R-01, R-02 → end of support on 31 Dec)**:
+  * A slip that runs past 31 Dec leaves the affected zones on an unsupported system. This is the food-safety domain and non-recoverable.
+  * The capacity arithmetic gives about 21 Dec, only ten days short of that date.
+  * The probability is `Unknown/Insufficient data` because there is no slip-magnitude data. This drives Research R-01b.
+* **X-3 (R-02, R-04 → freezer zones)**:
+  * The R1 and R2 exposures concentrate in the freezer zones, through firmware 4.2 and the missing per-zone latency evidence.
+  * B's pilot drops also occurred at −25 °C [F1 D-08], which weakly suggests the freezer environment is a common difficulty [I, weak].
+
+**No-tolerance-test note.** Every tolerance is in force. Each "Within" or "Exceeds" above is tested against the Provenance line, with qualifications shown where the point estimate and the credible range disagree.
+
+**Bias Check (B3 estimates)**
+
+| # | Bias | Result |
+| --- | --- | --- |
+| 1 | Anchoring | Live risk, countered by credible ranges and the independent capacity cross-check against the 33% figure |
+| 2 | Status quo | Not applicable |
+| 3 | Sunk cost | Not applicable |
+| 4 | Confirmation | Live risk, countered by testing the PM's estimate with a second method (capacity arithmetic) |
+| 5 | Framing | Live risk, countered by stating both P(slip) and P(on time) |
+| 6 | Overconfidence | Live risk, countered by the Wilson interval and the widened 2–5 range |
+| 7 | Recallability | Not applicable |
+| 8 | Base-rate neglect | Live risk, not yet countered for the schedule, which has no reference class. Firmware uses the 2025 base rate |
+| 9 | Optimism / planning fallacy | Live risk, not yet countered. The vendor estimates its own schedule (closure via R-01b) |
+| 10 | Groupthink | Not applicable. Each estimate was set by one individual |
+
+---
+
+## Uncertainty Treatment
+
+| Input | Type | Can it be quantified now? | Treatment |
+| --- | --- | --- | --- |
+| Three-crew slip probability | Epistemic | Not yet | Research (R-01b) |
+| Two-crew slip of 33% | Judgmental | Partly | Elicit from at least two experts; widen bounds (done: 2–5) |
+| Firmware lot failure | Aleatory (the event); Epistemic (the rate, n = 10) | Yes, as a bounded range | Margin through early order, sequencing and fallback (R-02a). Research does not apply to the event |
+| Replacement-lot lead time and failure mode | Epistemic | Not yet | Research (R-02b) |
+| R1 tolerance wording | Ambiguity | n/a | Defined inline (AS-2). Owner to confirm |
+| P90 cost forecasts | Modeling | Partly | Treated as conditional on the model. Obtain means and an independent review |
+| Peak-season start | Endpoint | No | Clarify whether 1 Dec is tied to peak season |
+| Consequence calibration | Value | No | Surface to the decision-maker and Risk Committee: the matrix needs consequence descriptors |
+| Statutory record retention | Epistemic | Not yet | Legal/QA confirmation |
+| Scope (two other sites) | Ambiguity | n/a | AS-1. Owner to confirm |
+
+---
+
+## Opportunity Handling
+
+Not used. No upside was supplied, and B's lower quote is already reflected in A5.
+
+---
+
+## Pre-send Verification: Passed
+
+* Provenance is complete. The missing time of day and model version are recorded and carried to GAPS.
+* Material statements are labelled, Facts are tiered (D-01 to D-20), and Inferences trace to D-IDs or AS-IDs.
+* Every valid risk (R-01, R-02) has likelihood, consequence, a disposition per driver, matrix arithmetic, and both escalation tests with their triggering conditions shown.
+* Invalid rows are marked with the failing B2 questions.
+* Likelihood levels are read from the half-open bands (33% → 3; 10% → 2).
+* The register follows the fixed 14 columns.
+* Every Mitigate shows a residual and a secondary risk. Residuals that cannot be tested are stated as such.
+* Tolerances are in force and no untested claim is made.
+* No quantitative claim exceeds the evidence: ranges are given wherever the evidence is thin.
+
+---
+
+## REQUIRED CLOSE
+
+**STATUS:** pending review
+
+**NEXT STEPS**
+
+| # | Action | Owner | Due | Trigger / condition |
+| --- | --- | --- | --- | --- |
+| 1 | Select A, and decide on the R2 exceedance: fund recovery or obtain tolerance-owner acceptance | COO | Before cutover start, Mon 19 Oct | Immediate |
+| 2 | Obtain written two- and three-crew slip estimates with ranges and slip magnitude (R-01b) | Corvane cutover PM | 21 Oct | Three-crew estimate > 11% → reopen A6 |
+| 3 | Secure a third crew in writing (R-01a) | Corvane cutover PM, with COO funding | 23 Oct | Not secured → Elevate |
+| 4 | Confirm whether firmware 4.2 has been ordered; if not, order it now (R-02a). Obtain replacement lead time and failure mode (R-02b) | Corvane cutover PM | Order by 25 Oct (target earlier); answers by 23 Oct | Order not confirmed by 23 Oct, or failure is release-wide → Elevate |
+| 5 | Verify a complete, restore-tested backup of the 24-month records, then revalidate R-03 | QA-07 owner | Before migration starts | No verified restore → recommend holding migration |
+| 6 | Run a per-zone latency acceptance test before each group goes live, then revalidate R-04 | Operations lead | Before the first group goes live | More than 2 zones over 5 min at P95 → hold the group |
+| 7 | Weekly progress Watch (R-01c) | Corvane cutover PM | Fridays from 23 Oct | Shortfall of 5 or more zones (AS-6) |
+| 8 | Supply the model means and third-crew cost against the 0.18 bn P90 headroom | Finance | 23 Oct | P90 > 1.8 bn → reopen A6 |
+| 9 | Ask Vendor K whether support for the current system can be extended beyond 31 Dec (X-2 contingency) | COO / procurement | 30 Oct | Unavailable → X-2 rises in priority |
+| 10 | Confirm the tolerance owner, consequence descriptors and the AS-2 reading | COO / Risk Committee | Review on 2 Nov | Endpoint or Value conflict → Elevate |
+
+**GAPS** (each item is `Unknown/Insufficient data`, with the input that would close it)
+
+1. **Time of day of the analysis:** the analyst's timestamp record.
+2. **Analyst model version:** the deployment log.
+3. **Slip probability for A with three crews:** a Vendor K written estimate.
+4. **Slip-magnitude distribution:** Vendor K's and the operations lead's estimates.
+5. **Crew-loading profile and exact action-point date:** the detailed Vendor K plan.
+6. **Firmware 4.2 order status:** procurement confirmation.
+7. **Replacement-lot lead time, release-wide versus lot failure, and number of freezer zones:** Vendor K; the site zone list.
+8. **Per-zone latency for A at this site:** a per-zone acceptance test.
+9. **Current system's latency (affects C and the fallback):** the system logs.
+10. **Verified backup of the 24-month records:** a restore-test record.
+11. **Means of the finance models for A and B, and B's tail above P90:** the finance team.
+12. **B's cutover plan:** Vendor M.
+13. **B's pilot details (freezer gateway count, drop durations, zones per gateway):** the pilot log.
+14. **C's manual-check cost and record access after 31 Dec:** operations; Vendor K.
+15. **Peak-season start date:** commercial or operations.
+16. **Owner of the tolerances and authority to accept an exceedance:** the Risk Committee or DOA.
+17. **Consequence descriptors in the matrix:** the Risk Committee.
+18. **Statutory or regulatory record-retention obligations:** legal or QA.
+19. **Customer contractual monitoring obligations:** commercial contracts.
+20. **Names of individual owners:** the COO.
+21. **Cost of a third crew:** the installer's quote.
+22. **Scope ambiguity (the "two other sites"):** the COO or project charter.
+23. **Support extension beyond 31 Dec:** Vendor K.
+
+**BIAS:**
+* Alternative A carries a richer evidence set because it is the incumbent, so it may look stronger partly *because* more is known about it.
+* No disconfirming search on Vendor K was performed.
+* Consequence levels are the analyst's judgment, made without matrix descriptors.
+* The 9-week capacity cross-check rests on AS-9, which may overstate the slip.
+* The R-01 escalation depends on an inferred action date of 25 Oct. If that date is judged later than 2 Nov, R-01 stays High rather than Critical.
+
+**OUTCOME:** needs input. The analysis is complete, but the recommendation is conditional on Next Steps 1–5, several of which fall due within the next week.
+
+*Final liability rests with the Human.*
+
+---
+
+Final Liability rests with the Human.

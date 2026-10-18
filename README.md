@@ -2,7 +2,7 @@
 
 *Human-made, for Easy Work, Simply Done*
 
-**Version 1.5.1 · 2026-10-17 · License: [CC BY-NC-SA 4.0](LICENSE.md) · Changes: [CHANGELOG.md](CHANGELOG.md)**
+**Version 1.6.0 · 2026-10-18 · License: [CC BY-NC-SA 4.0](LICENSE.md) · Changes: [CHANGELOG.md](CHANGELOG.md)**
 
 A model-agnostic working prompt for decision making and risk management under uncertainty, tuned for frontier-class models.
 
@@ -10,11 +10,29 @@ A model-agnostic working prompt for decision making and risk management under un
 
 Method lineage: risk-informed decision making (select) paired with continuous risk management (manage). This prompt is a reasoning scaffold, not a source of authority and not a substitute for professional, legal or engineering judgment. It structures analysis. It does not certify outcomes.
 
+## What to supply
+
+The prompt runs on less and says what it lacked. Two runs are comparable only when they start from the same inputs, so supply these, each with its source:
+
+1. **The matter** in one or two sentences, and whether you must choose among alternatives (SELECT), manage a choice already made (MANAGE) or both.
+2. **The decision-maker** and their authority to decide.
+3. **Requirements or objectives**, each with its direction of goodness, and every imposed constraint with its source (law, contract, policy or instruction).
+4. **The alternatives**, each with its defining assumptions (SELECT only).
+5. **The risk tolerance** each requirement is held to, for example cost at the 90th-percentile forecast. A MANAGE-only matter has no Phase A to set one, so supply it here, or the analysis reports that no risk could be tested against tolerance.
+6. **The approved risk matrix**: its likelihood and consequence scales, the band each cell falls in, the combination rule if it has one, its source and the date of the version used. Without it no criticality band is assigned.
+7. **The horizon** for likelihood and **the date of the next scheduled register review**, which sets the short-timeframe test for escalation.
+8. **Source documents and data**, named, and any numeric thresholds your organization pins to the stakes bands.
+
+Anything not supplied is marked `Unknown/Insufficient data` and listed under GAPS with the input that would close it; the model does not fill it in. Phase B returns its risks in the fixed register format the prompt specifies, so registers from two runs line up column by column. [examples/sample-run-transcript.md](examples/sample-run-transcript.md) shows a full run on a fictional matter, and [tests.md](tests.md) records where that run and a second one departed from the format.
+
 ## What's in this repository
 
 | File | Contents |
 | --- | --- |
 | [risk-informed-prompt.md](risk-informed-prompt.md) | The full working prompt. Copy everything below its horizontal rule. |
+| [tests.md](tests.md) | The two test cases, the acceptance rule, the last run, its known defects and the run log. |
+| [examples/sample-run-transcript.md](examples/sample-run-transcript.md) | One generated run on a fictional matter, input and output verbatim. It failed its case on two named elements and is not an exemplar. |
+| [evidence/](evidence/transcripts-2026-10-18-T5/README.md) | The transcripts of every logged run, copied byte for byte. |
 | [CHANGELOG.md](CHANGELOG.md) | Version history. |
 | [LICENSE.md](LICENSE.md) | CC BY-NC-SA 4.0. |
 
@@ -30,7 +48,7 @@ Nearest neighbors:
 
 ## How to Cite
 
-> Paik, Son-U Michael. *Risk-Informed Decision Making and Continuous Risk Management*, v1.5.1. GRC Solutions Korea, 2026. https://github.com/rolldabones/risk-informed-decision-making-prompt
+> Paik, Son-U Michael. *Risk-Informed Decision Making and Continuous Risk Management*, v1.6.0. GRC Solutions Korea, 2026. https://github.com/rolldabones/risk-informed-decision-making-prompt
 
 A machine-readable citation is in [CITATION.cff](CITATION.cff).
 

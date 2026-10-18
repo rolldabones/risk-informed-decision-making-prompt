@@ -1,0 +1,24 @@
+{
+ "suite": "risk-informed-sample",
+ "repo": "risk-informed-decision-making-prompt",
+ "head": "6ddb0c4",
+ "system_files": {
+  "../Claude outputs/T5-runs/suites/blocks/risk-informed-decision-making-prompt-risk-informed-prompt.txt": "978a7594bc005b442f15c72300d03c06a5fa475448d88fc643ea14b9c0fe9251"
+ },
+ "tested_model": "claude-opus-5-5",
+ "scorer_model": "claude-sonnet-5-5",
+ "max_tokens": 64000,
+ "finished": "2026-10-18T11:45+09:00",
+ "results": [
+  {
+   "case": "RI-01",
+   "verdict": "FAIL",
+   "truncated": false
+  },
+  {
+   "case": "RI-02",
+   "verdict": "FAIL",
+   "truncated": false
+  }
+ ]
+}
