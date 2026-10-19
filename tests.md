@@ -1,6 +1,6 @@
 # Tests
 
-Developer tests of the working prompt, the acceptance rule they are read against and the log of every run. Version 1.6.0 · 2026-10-18.
+Developer tests of the working prompt, the acceptance rule they are read against and the log of every run. Version 1.6.1 · 2026-10-19.
 
 ## 1. Cases
 
@@ -26,7 +26,7 @@ No acceptance rule was published before the first run. For v1.6.0: a configurati
 | Scorer | `claude-sonnet-5-5`, a different model, so no model graded itself |
 | Harness | Anthropic API, the instruction text as the system prompt, no tools, max_tokens 64,000, streamed |
 | Run label | T5, finished 11:45 KST |
-| Reviewer | Pending (Michael Paik) |
+| Reviewer | Michael Paik, 19 October 2026 (KST); concurs with the scoring as recorded |
 
 **First attempt, not exercised.** The same cases ran first at max_tokens 16,000 (finished 10:55 KST). In all four turns the model spent the whole budget before returning any text (`stop_reason` max_tokens, no text), so neither case reached the state it tests. Both are recorded as not exercised; the scorer's FAIL on them is kept in the transcripts and is not a finding about the prompt.
 
@@ -41,7 +41,7 @@ No acceptance rule was published before the first run. For v1.6.0: a configurati
 | RI-02 | | risk statement cells (outside the numbered elements) | Concur, model behavior | Cells read "As in B1 R-01" against the format's "The B1 form, verbatim". The model's own second turn says its first reply "broke three rules" and delivers a revision; that turn was not scored |
 | RI-02 | | case-specific elements (9) to (13) | Concur with the scorer's met | MANAGE classification, Tolerance in force Unknown, every Tolerance cell Unknown, no exceed or within claim, the tolerance in GAPS |
 
-**Counts, run T5.** Scorer: 0 PASS, 2 FAIL, 0 unscorable. Session review by element: 3 instrument defects (K1, K2, K3), 2 model behavior, 1 case defect, 0 dissents. First attempt: 2 cases not exercised (truncated). **Acceptance: not accepted.** Open cases: RI-01, RI-02. Reviewer: pending (Michael Paik).
+**Counts, run T5.** Scorer: 0 PASS, 2 FAIL, 0 unscorable. Session review by element: 3 instrument defects (K1, K2, K3), 2 model behavior, 1 case defect, 0 dissents. First attempt: 2 cases not exercised (truncated). **Acceptance: not accepted.** Open cases: RI-01, RI-02. Reviewer: Michael Paik, 19 October 2026 (KST), concurs.
 
 The RI-01 transcript is published as [examples/sample-run-transcript.md](examples/sample-run-transcript.md), labeled as a generated run that failed its case.
 

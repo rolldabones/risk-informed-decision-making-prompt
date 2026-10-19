@@ -2,6 +2,13 @@
 
 All notable changes to this repository are documented here. Versioning follows [Semantic Versioning](https://semver.org/). The README and this file version in lockstep; prior versions are superseded, never silently overwritten.
 
+## v1.6.1 (2026-10-19)
+
+Patch, from the weekly maintenance sweep of 19 October 2026 (KST) and Michael Paik's review of the T5 runs, completed 19 October 2026 (KST), on which he concurs with the scoring as recorded. No change to `risk-informed-prompt.md`; the tested configuration stays prompt v1.6.0.
+
+- **Run T5 reviewed.** `tests.md` records the reviewer in the configuration table and the counts line. Not accepted, as before: RI-01 and RI-02 fail; K1 to K3 stay open.
+- README masthead, `tests.md` masthead, How to Cite and `CITATION.cff` to v1.6.1.
+
 ## v1.6.0 (2026-10-18)
 
 Minor. Session T5 of the whole-account review of 15 October 2026 (doc section 5; reviewer report 13, items A18, A19, A20 and B8). **Amendment note, 18 October 2026 (KST):** the working prompt is re-versioned 1.5.1 to 1.6.0 because four rules change what a run must produce. A run under v1.5.1 can disagree with a run under v1.6.0 on a likelihood level at 33 or 66 percent, on an escalation and on whether a risk exceeds tolerance.
