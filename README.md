@@ -2,7 +2,7 @@
 
 *Human-made, for Easy Work, Simply Done*
 
-**Version 1.6.1 · 2026-10-19 · License: [CC BY-NC-SA 4.0](LICENSE.md) · Changes: [CHANGELOG.md](CHANGELOG.md)**
+**Version 1.6.2 · 2026-10-20 · License: [CC BY-NC-SA 4.0](LICENSE.md) · Changes: [CHANGELOG.md](CHANGELOG.md)**
 
 A model-agnostic working prompt for decision making and risk management under uncertainty, tuned for frontier-class models.
 
@@ -48,7 +48,7 @@ Nearest neighbors:
 
 ## How to Cite
 
-> Paik, Son-U Michael. *Risk-Informed Decision Making and Continuous Risk Management*, v1.6.1. GRC Solutions Korea, 2026. https://github.com/rolldabones/risk-informed-decision-making-prompt
+> Paik, Son-U Michael. *Risk-Informed Decision Making and Continuous Risk Management*, v1.6.2. GRC Solutions Korea, 2026. https://github.com/rolldabones/risk-informed-decision-making-prompt
 
 A machine-readable citation is in [CITATION.cff](CITATION.cff).
 

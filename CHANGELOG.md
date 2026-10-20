@@ -2,6 +2,11 @@
 
 All notable changes to this repository are documented here. Versioning follows [Semantic Versioning](https://semver.org/). The README and this file version in lockstep; prior versions are superseded, never silently overwritten.
 
+## v1.6.2 (2026-10-20)
+
+- LICENSE: two defects against the Creative Commons legal code corrected (the space in 'ShareAlike. In'; the CC0 sentence of the closing notice). Operative terms unchanged.
+- README masthead, How to Cite and `CITATION.cff` to v1.6.2. `risk-informed-prompt.md` and the `tests.md` masthead are unchanged.
+
 ## v1.6.1 (2026-10-19)
 
 Patch, from the weekly maintenance sweep of 19 October 2026 (KST) and Michael Paik's review of the T5 runs, completed 19 October 2026 (KST), on which he concurs with the scoring as recorded. No change to `risk-informed-prompt.md`; the tested configuration stays prompt v1.6.0.
