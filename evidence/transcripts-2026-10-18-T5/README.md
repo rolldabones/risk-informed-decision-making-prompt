@@ -4,9 +4,9 @@ Run record for [tests.md](../../tests.md). The working prompt [risk-informed-pro
 
 **When.** 18 October 2026 (KST): a first attempt finished 10:55 KST at max_tokens 16,000, and the run of record finished 11:45 KST at max_tokens 64,000, streamed, with the same cases.
 
-**Models.** Tested: `claude-opus-5-5`. Scorer: `claude-sonnet-5-5`, a different model, so no model graded itself. LLM scoring is developer testing, not independent assurance; the named reviewer's review is pending.
+**Models.** Tested: `claude-opus-5-5`. Scorer: `claude-sonnet-5-5`, a different model, so no model graded itself. LLM scoring is developer testing, not independent assurance. The named reviewer, Michael Paik, completed his review on 19 October 2026 (KST) and concurs with the scoring as recorded (see [tests.md](../../tests.md)).
 
-**How produced.** A session harness sent each case to the Anthropic API with the prompt as the system prompt and no tools, then sent the transcript, the case's pass condition and the acceptance rule to the scorer. Michael Paik ran the harness in his own Terminal; the API key never entered the session. The `summary` files are the harness's run summaries.
+**How produced.** A session harness sent each case to the Anthropic API with the prompt as the system prompt and no tools, then sent the transcript, the case's pass condition and the acceptance rule to the scorer. Michael Paik ran the harness in his own Terminal; the API key never entered the session. The `summary` files are the harness's run summaries; the `../Claude outputs/...` paths in them are the maintainer's local paths at run time, not paths in this repository.
 
 **First attempt, not exercised.** At max_tokens 16,000 every turn of both cases ended at `max_tokens` with no text returned, so neither case reached the state it tests. Those transcripts are kept with the suffix `-run1-truncated` and are not a finding about the prompt.
 
@@ -21,7 +21,7 @@ Run record for [tests.md](../../tests.md). The working prompt [risk-informed-pro
 | [RI-02-run1-truncated.md](RI-02-run1-truncated.md) | RI-02, first attempt | not exercised (scorer FAIL on empty turns) | `10e909b9461feaa8ba3261a544bf496cb55860890118beccab0e276368c46ff7` |
 | [summary-run1-truncated.json](summary-run1-truncated.json) | first attempt summary | n/a | `c0449fe7c2b0a1546bee987c6c2957acd4718df7f709ccc4cdd051a4664707af` |
 
-Both summaries read HEAD `6ddb0c4`, the v1.5.1 commit; the run used the v1.6.0 working tree, whose prompt text the digest above identifies. Model output inside the transcripts is verbatim and is not edited for house style.
+Both summaries read HEAD `6ddb0c4`, the v1.5.1 commit; the run used the v1.6.0 working tree, whose prompt text the digest above identifies. The RI-01 pass condition ends "This case's transcript is the source of examples/sample-run.md"; the file is [examples/sample-run-transcript.md](../../examples/sample-run-transcript.md). Model output inside the transcripts is verbatim and is not edited for house style.
 
 ---
 

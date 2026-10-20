@@ -1,6 +1,6 @@
 # Tests
 
-Developer tests of the working prompt, the acceptance rule they are read against and the log of every run. Version 1.6.1 · 2026-10-19.
+Developer tests of the working prompt, the acceptance rule they are read against and the log of every run. Version 1.7.0 · 2026-10-20.
 
 ## 1. Cases
 
@@ -17,11 +17,11 @@ No acceptance rule was published before the first run. For v1.6.0: a configurati
 
 ## 3. Last run
 
-**Run T5, 18 October 2026 (KST).** Configuration:
+**Run T5, 18 October 2026 (Korea Standard Time, KST).** Configuration:
 
 | Field | Entry |
 | --- | --- |
-| Instruction text | [risk-informed-prompt.md](risk-informed-prompt.md) v1.6.0, everything below its horizontal rule, 23,098 bytes, SHA-256 `978a7594bc005b442f15c72300d03c06a5fa475448d88fc643ea14b9c0fe9251` |
+| Instruction text | [risk-informed-prompt.md](risk-informed-prompt.md) v1.6.0, everything below its horizontal rule, 23,098 bytes, Secure Hash Algorithm 256-bit (SHA-256) digest `978a7594bc005b442f15c72300d03c06a5fa475448d88fc643ea14b9c0fe9251` |
 | Tested model | `claude-opus-5-5` |
 | Scorer | `claude-sonnet-5-5`, a different model, so no model graded itself |
 | Harness | Anthropic API, the instruction text as the system prompt, no tools, max_tokens 64,000, streamed |
@@ -32,7 +32,7 @@ No acceptance rule was published before the first run. For v1.6.0: a configurati
 
 | Case | Scorer verdict | Element | Session review | Reason |
 | --- | --- | --- | --- | --- |
-| RI-01 | FAIL | (11) every Tolerance cell one value | Concur, instrument defect (K1) | R-02a reads "Within on its own at the point estimate ... **Exceeds** ... in aggregate". The Tolerance column says "Within, Exceeds or `Unknown/Insufficient data`, against the Tolerance in force", and the R2 tolerance (P80 cutover by 1 December) belongs to a requirement that two risks share. The format does not say whether the cell tests the risk alone or with the risks that share the requirement |
+| RI-01 | FAIL | (11) every Tolerance cell one value | Concur, instrument defect (K1) | R-02a reads "Within on its own at the point estimate ... **Exceeds** ... in aggregate". The Tolerance column says "Within, Exceeds or `Unknown/Insufficient data`, against the Tolerance in force", and the R2 tolerance (80th-percentile, or P80, cutover by 1 December) belongs to a requirement that two risks share. The format does not say whether the cell tests the risk alone or with the risks that share the requirement |
 | RI-01 | | (4) labels on every row | Case defect | R-03 and R-04 are marked not valid under B2. B3 analyzes "each valid risk", the register format allows `n/a` with the reason, and the Pre-send item requires the tests "for every valid risk". The pass condition said every register row, an assumption the prompt does not make |
 | RI-01 | | all other elements | Concur with the scorer's met | Half-open bands read correctly (33 percent level 3, 10 percent level 2), arithmetic correct, escalation on both conditions, Required Close complete. The scorer accepted the closing line the model added after OUTCOME and says another scorer could count it; see K3 |
 | RI-02 | FAIL | (8) Required Close last | Concur, instrument defect (K3) | The turn ends with OUTCOME, a rule and "*Final liability rests with the human decision-maker.*". The prompt says "Every response ends with these five items", but the loaded text itself ends with the line "Final Liability rests with the Human.", which invites the model to append one |
@@ -43,17 +43,24 @@ No acceptance rule was published before the first run. For v1.6.0: a configurati
 
 **Counts, run T5.** Scorer: 0 PASS, 2 FAIL, 0 unscorable. Session review by element: 3 instrument defects (K1, K2, K3), 2 model behavior, 1 case defect, 0 dissents. First attempt: 2 cases not exercised (truncated). **Acceptance: not accepted.** Open cases: RI-01, RI-02. Reviewer: Michael Paik, 19 October 2026 (KST), concurs.
 
+Independent review, 20 October 2026: RI-01 shows the two behaviors charged to RI-02. Its Bias Check cells add text after the label ("Live risk, not yet countered. The favourable evidence for A comes from ..."; "Not applicable. Each estimate was set by one individual"), as on RI-02's element (6), and its turn ends with "*Final liability rests with the Human.*" after OUTCOME, as on RI-02's element (8). The scoring and the concurrence above stand as recorded.
+
+**Current text.** Prompt v1.7.0 narrows limb (b) of the high-uncertainty test to the likelihood score. It has not been run: **not accepted pending a logged run.**
+
 The RI-01 transcript is published as [examples/sample-run-transcript.md](examples/sample-run-transcript.md), labeled as a generated run that failed its case.
 
 ## 4. Known defects
 
-Recorded from run T5; the instrument text is unchanged in this release, because a change is a new text and needs a new run.
+K1 to K3 were recorded from run T5; K4 to K6 from the independent review of 20 October 2026. All six are open. v1.7.0 changes one rule (limb (b)) and fixes none of them, because each fix is a new text and needs a new run.
 
 | ID | Defect | Text | Effect |
 | --- | --- | --- | --- |
 | K1 | The Tolerance column does not say whether it tests the risk alone or in aggregate with the risks that share a requirement | "Within, Exceeds or `Unknown/Insufficient data`, against the Tolerance in force" | A requirement-level tolerance shared by several risks yields a compound cell (RI-01, R-02a) |
 | K2 | The register format does not say what a second or later driver row carries in the risk-level columns (Likelihood to Criticality) | "a risk with several drivers takes one row per driver (R-01a, R-01b), and its risk statement appears in the first of them only" | One run repeats by reference ("as R-01a"), another writes `n/a`; two runs are not comparable on those cells |
 | K3 | "Every response ends with these five items" sits in a text whose own last line is the closing line "Final Liability rests with the Human." | Required Close; the final line of the prompt | The model appends a closing line after OUTCOME (both cases) |
+| K4 | B5 names a section that does not exist; B4 is "Disposition" | "Trigger conditions that reopen Analyze or Plan" | A reader or model cannot tell which section a trigger reopens |
+| K5 | A Scoring Convention sentence has no verb | "Never false precision, and never a band the matrix does not support." | The rule reads as a fragment; its intent (no false precision, no band the matrix does not support) is clear but not stated as an instruction |
+| K6 | B4 assigns one disposition per driver, but Accept "Applies to the overall posture, not to individual drivers" (deferred item A21: permit Accept per driver) | "Assign one per driver"; the Accept bullet | The two rules pull against each other; the register records Accept in a posture line below the table |
 
 ## 5. Run log
 

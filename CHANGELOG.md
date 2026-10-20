@@ -2,6 +2,23 @@
 
 All notable changes to this repository are documented here. Versioning follows [Semantic Versioning](https://semver.org/). The README and this file version in lockstep; prior versions are superseded, never silently overwritten.
 
+## v1.7.0 (2026-10-20)
+
+Minor, because one rule changes what a run must produce. Independent review of 20 October 2026; changes made with Claude, approved by Michael Paik. Dates are Korea Standard Time (KST).
+
+- **Prompt rule (RID-03).** Limb (b) of the high-uncertainty test in `risk-informed-prompt.md` now reads the likelihood score only. Consequence is scored on labels without descriptors and almost always rests on judgment, so in both T5 runs every valid risk met limb (b) on consequence and the test did not discriminate. The prompt is re-versioned 1.6.0 to 1.7.0 (masthead and amendment line) and is **not accepted pending a logged run**. New digest of the text below the first horizontal rule: 23,073 bytes, SHA-256 `4263af696112a4bd01a22ec540838e317c9e9c8f759892f1c31bd6d317864645`. The T5 records still describe v1.6.0.
+- **Known defects disclosed (RID-06, RID-07, RID-08, RID-10).** `tests.md` section 4 adds K4 (B5 names a "Plan" section that does not exist), K5 (a Scoring Convention sentence is a fragment) and K6 (per-driver disposition against posture-level Accept, deferred item A21). The README gains a Known defects paragraph listing K1 to K6. None is fixed in the prompt, because each fix is a new text and needs a new run.
+- **Test record (RID-01).** `tests.md` adds a dated note beside the 19 October concurrence: RI-01 shows the Bias Check and closing-line behaviors charged to RI-02 on elements (6) and (8). The recorded scoring and concurrence stand.
+- **Evidence README (RID-02, RID-11, RID-18).** Records the completed review of 19 October 2026, notes that the RI-01 pass condition's "examples/sample-run.md" means `examples/sample-run-transcript.md`, and describes the `../Claude outputs/...` paths in the summary files as the maintainer's local paths. Transcripts and summaries are unchanged.
+- **README claims qualified (RID-04, RID-05, X-08).** Registers from two runs line up in format; score reproducibility is untested. The only tested configuration was not accepted, and the output needs a budget above 16,000 tokens. The master-prompt neighbor line no longer claims shared conventions that prompt does not carry.
+- **README lineage cited (RID-19).** National Aeronautics and Space Administration (NASA) *Risk-Informed Decision Making Handbook* (NASA/SP-2010-576, v1.0, April 2010) and *NASA Risk Management Handbook* (NASA/SP-2011-3422, v1.0, November 2011).
+- **Wording (RID-09, RID-15).** "Below the first horizontal rule" in the prompt masthead and README; ERM, KST, SHA-256 and P80 spelled out at first use.
+- **How to Cite and `CITATION.cff` (RID-16).** No change: How to Cite keeps the publisher, GRC Solutions Korea, as in every repository of this account. `CITATION.cff` carries none because Citation File Format 1.2.0 has no top-level publisher key.
+- **Earlier entries' references (RID-12).** Entries below refer to records kept outside this repository: the maintainer's whole-account review of 15 October 2026 (its document sections, reviewer report 13 and item numbers such as A18, B8 and C1), the account-maintenance runbook, its guard classes (E3 checks that the README, How to Cite and `CITATION.cff` carry one version; E4 checks version tokens in the README) and the `CITATION.cff` house form (D-C1) that the v1.4.2 entry describes. "Ruling 7 of 15 October 2026" is the rule that shipped changelog entries are left as written.
+- README masthead, How to Cite, `CITATION.cff` and the `tests.md` masthead to v1.7.0.
+- Findings applied: RID-01, RID-02, RID-03, RID-04, RID-05, RID-06, RID-07, RID-08, RID-09, RID-10, RID-11, RID-12, RID-15, RID-18, RID-19 and X-08. RID-16 (How to Cite keeps the account's publisher form), RID-13 and RID-14 (spelling and a serial comma in shipped entries) and RID-17 (the acceptance rule stays as published for v1.6.0) take no change.
+- Shipped entries below are left as written.
+
 ## v1.6.2 (2026-10-20)
 
 - LICENSE: two defects against the Creative Commons legal code corrected (the space in 'ShareAlike. In'; the CC0 sentence of the closing notice). Operative terms unchanged.
