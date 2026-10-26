@@ -1,0 +1,24 @@
+{
+ "suite": "ridm-r1",
+ "repo": "risk-informed-decision-making-prompt",
+ "head": "a2a459f",
+ "system_files": {
+  "../Claude outputs/T5-runs/suites/blocks/ridm-prompt-v1.7.0.txt": "4263af696112a4bd01a22ec540838e317c9e9c8f759892f1c31bd6d317864645"
+ },
+ "tested_model": "claude-opus-5-5",
+ "scorer_model": "claude-sonnet-5-5",
+ "max_tokens": 64000,
+ "finished": "2026-10-26T10:13+09:00",
+ "results": [
+  {
+   "case": "RI-01",
+   "verdict": "FAIL",
+   "truncated": false
+  },
+  {
+   "case": "RI-02",
+   "verdict": "PASS",
+   "truncated": false
+  }
+ ]
+}

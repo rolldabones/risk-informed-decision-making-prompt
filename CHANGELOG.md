@@ -2,6 +2,10 @@
 
 All notable changes to this repository are documented here. Versioning follows [Semantic Versioning](https://semver.org/). The README and this file version in lockstep; prior versions are superseded, never silently overwritten.
 
+## v1.7.2 (2026-10-26)
+
+Patch release, record only. **Run R1 logged:** prompt v1.7.0 on `claude-opus-5-5`, scored by `claude-sonnet-5-5`, max_tokens 64,000, the cases of run T5 unchanged. Scorer: RI-01 FAIL, RI-02 PASS. Session review: RI-01 concur (K1, K3); RI-02 dissent to FAIL, because its turn ends with a closing line after OUTCOME, the line the scorer failed in RI-01 and run T5 failed in RI-02 (K3). **Not accepted** under `ACCEPTANCE.md` in the `rolldabones` repository; reviewer Michael Paik concurring per case. K1 and K3 recur; K2 did not. No rule in the prompt changed. `tests.md` (Last run, known defects, run log, status) and the README status line updated; transcripts in `evidence/transcripts-2026-10-26-R1/`. Prepared with Claude, approved by Michael Paik.
+
 ## v1.7.1 (2026-10-26)
 
 Patch release. Acceptance restated as a tolerance: the tests file is now read under the account rule, [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), names its critical cases and records the instrument's status under that rule (not accepted: v1.7.0 has no run; v1.6.0 failed both cases); the README carries the same status below its masthead. No rule in the instrument changed and no run was made; the edits are to the test record and the front door. Train A of the whole-account review of 24 October 2026 (KST); prepared with Claude, approved by Michael Paik.

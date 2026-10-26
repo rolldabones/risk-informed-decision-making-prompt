@@ -1,6 +1,6 @@
 # Tests
 
-Developer tests of the working prompt, the acceptance rule they are read against and the log of every run. Version 1.7.1 · 2026-10-26.
+Developer tests of the working prompt, the acceptance rule they are read against and the log of every run. Version 1.7.2 · 2026-10-26.
 
 ## 1. Cases
 
@@ -19,7 +19,30 @@ No acceptance rule was published before the first run. For v1.6.0: a configurati
 
 ## 3. Last run
 
-**Status under [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 26 October 2026 (KST).** Not accepted. Prompt v1.7.0 has no logged run; the run of v1.6.0 (T5, 18 October 2026) failed both cases, RI-01 and RI-02. **Critical cases:** none.
+**Status under [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 26 October 2026 (KST).** Not accepted. Run R1 (26 October 2026) of the published prompt failed both cases after review, RI-01 and RI-02, on the open defects K1 and K3. **Critical cases:** none. The earlier status of this line, that prompt v1.7.0 had no logged run, was replaced the same day by run R1.
+
+**Run R1, 26 October 2026 (KST).** The logged run of prompt v1.7.0 that the account requires when a rule changes, read under [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md). Evidence: [evidence/transcripts-2026-10-26-R1/](evidence/transcripts-2026-10-26-R1/README.md). Configuration:
+
+| Field | Entry |
+| --- | --- |
+| Instruction text | [risk-informed-prompt.md](risk-informed-prompt.md) v1.7.0, everything below its horizontal rule, 23,073 bytes, SHA-256 `4263af696112a4bd01a22ec540838e317c9e9c8f759892f1c31bd6d317864645`; repository HEAD `a2a459f` (v1.7.1) |
+| Tested model | `claude-opus-5-5` |
+| Scorer | `claude-sonnet-5-5` |
+| Harness | As run T5: Anthropic API, the instruction text as the system prompt, no tools, max_tokens 64,000, streamed; cases RI-01 and RI-02 unchanged; no turn truncated |
+| Run label | R1 (`20261026-R1`), finished 10:13 KST |
+| Reviewer | Michael Paik, 26 October 2026 (KST); concurs per case with the session review below |
+
+| Case | Scorer verdict | Element | Session review | Reason |
+| --- | --- | --- | --- | --- |
+| RI-01 | FAIL | (11) every Tolerance cell one value | Concur, instrument defect (K1) | R-01a reads "Within at the point estimate (10% ≤ 20%); the upper bound and the aggregate (CE-1) exceed": the cell tests the risk alone and in aggregate, as R-02a did in run T5 |
+| RI-01 | | (8) Required Close last | Concur, instrument defect (K3) | The turn ends with "Final liability rests with the human decision-maker." after OUTCOME |
+| RI-01 | | all other elements | Concur with the scorer's met | Half-open bands, the matrix arithmetic and escalation on both conditions held; BOTH classified with Phase A first; driver rows read "as R-01a" |
+| RI-02 | PASS | (8) Required Close last | **Dissent to FAIL,** instrument defect (K3) | The turn ends with "*Final liability rests with the human decision-maker.*" after OUTCOME. The scorer passed the line as the instrument's sign-off and failed the same line in RI-01; run T5 failed RI-02 on it |
+| RI-02 | | all other elements | Concur with the scorer's met | MANAGE with no Phase A; Tolerance in force and every Tolerance cell `Unknown/Insufficient data`; the missing tolerance in GAPS; driver rows read "as R-01a" |
+
+**Counts, run R1.** Scorer: 1 PASS, 1 FAIL, 0 unscorable, 0 truncated. Session review: 1 dissent to FAIL (RI-02, element (8)); after review 0 PASS, 2 FAIL. Both failures are instrument defects already open (K1, K3), disposed fix in the next text, which needs its own run; K2 did not recur. **Acceptance: not accepted.** Open cases: RI-01, RI-02. Reviewer: Michael Paik, 26 October 2026 (KST), concurs per case.
+
+**Earlier run.**
 
 **Run T5, 18 October 2026 (Korea Standard Time, KST).** Configuration:
 
@@ -49,13 +72,13 @@ No acceptance rule was published before the first run. For v1.6.0: a configurati
 
 Independent review, 20 October 2026: RI-01 shows the two behaviors charged to RI-02. Its Bias Check cells add text after the label ("Live risk, not yet countered. The favourable evidence for A comes from ..."; "Not applicable. Each estimate was set by one individual"), as on RI-02's element (6), and its turn ends with "*Final liability rests with the Human.*" after OUTCOME, as on RI-02's element (8). The scoring and the concurrence above stand as recorded.
 
-**Current text.** Prompt v1.7.0 narrows limb (b) of the high-uncertainty test to the likelihood score. It has not been run: **not accepted pending a logged run.**
+**Current text.** Prompt v1.7.0 narrows limb (b) of the high-uncertainty test to the likelihood score. Run R1 of 26 October 2026, above, ran it: **not accepted.**
 
 The RI-01 transcript is published as [examples/sample-run-transcript.md](examples/sample-run-transcript.md), labeled as a generated run that failed its case.
 
 ## 4. Known defects
 
-K1 to K3 were recorded from run T5; K4 to K6 from the independent review of 20 October 2026. All six are open. v1.7.0 changes one rule (limb (b)) and fixes none of them, because each fix is a new text and needs a new run.
+K1 to K3 were recorded from run T5; K4 to K6 from the independent review of 20 October 2026. All six are open. v1.7.0 changes one rule (limb (b)) and fixes none of them, because each fix is a new text and needs a new run. Run R1 (26 October 2026) shows K1 in RI-01 and K3 in both cases again; K2 did not recur.
 
 | ID | Defect | Text | Effect |
 | --- | --- | --- | --- |
@@ -72,6 +95,7 @@ K1 to K3 were recorded from run T5; K4 to K6 from the independent review of 20 O
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | T5 first attempt | 18 Oct 2026 | v1.6.0 | `claude-opus-5-5` | `claude-sonnet-5-5` | 16,000 | Not exercised: no text returned in any turn | [RI-01](evidence/transcripts-2026-10-18-T5/RI-01-run1-truncated.md), [RI-02](evidence/transcripts-2026-10-18-T5/RI-02-run1-truncated.md) |
 | T5 | 18 Oct 2026 | v1.6.0 | `claude-opus-5-5` | `claude-sonnet-5-5` | 64,000 | RI-01 FAIL, RI-02 FAIL; not accepted | [RI-01](evidence/transcripts-2026-10-18-T5/RI-01.md), [RI-02](evidence/transcripts-2026-10-18-T5/RI-02.md) |
+| R1 | 26 Oct 2026 | v1.7.0 | `claude-opus-5-5` | `claude-sonnet-5-5` | 64,000 | Scorer RI-01 FAIL, RI-02 PASS; after review both FAIL (K1, K3); not accepted | [RI-01](evidence/transcripts-2026-10-26-R1/RI-01.md), [RI-02](evidence/transcripts-2026-10-26-R1/RI-02.md) |
 
 ---
 
