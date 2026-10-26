@@ -2,7 +2,9 @@
 
 *Human-made, for Easy Work, Simply Done*
 
-**Version 1.7.0 · 2026-10-20 · License: [CC BY-NC-SA 4.0](LICENSE.md) · Changes: [CHANGELOG.md](CHANGELOG.md)**
+**Version 1.7.1 · 2026-10-26 · License: [CC BY-NC-SA 4.0](LICENSE.md) · Changes: [CHANGELOG.md](CHANGELOG.md)**
+
+**Acceptance status ([ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 26 October 2026, KST):** Not accepted. The published prompt (amended 20 October 2026) has no logged run; the run of the previous text (T5, 18 October 2026) failed both cases, RI-01 and RI-02. The account's status table is in [ECOSYSTEM.md](https://github.com/rolldabones/rolldabones/blob/main/ECOSYSTEM.md#instrument-status).
 
 A model-agnostic working prompt for decision making and risk management under uncertainty, tuned for frontier-class models. The only configuration tested so far, the previous prompt text on `claude-opus-5-5`, was not accepted, and the current text is not accepted pending a logged run; see [tests.md](tests.md).
 
@@ -50,7 +52,7 @@ Nearest neighbors:
 
 ## How to Cite
 
-> Paik, Son-U Michael. *Risk-Informed Decision Making and Continuous Risk Management*, v1.7.0. GRC Solutions Korea, 2026. https://github.com/rolldabones/risk-informed-decision-making-prompt
+> Paik, Son-U Michael. *Risk-Informed Decision Making and Continuous Risk Management*, v1.7.1. GRC Solutions Korea, 2026. https://github.com/rolldabones/risk-informed-decision-making-prompt
 
 A machine-readable citation is in [CITATION.cff](CITATION.cff).
 

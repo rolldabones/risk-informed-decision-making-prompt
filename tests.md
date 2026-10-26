@@ -1,6 +1,6 @@
 # Tests
 
-Developer tests of the working prompt, the acceptance rule they are read against and the log of every run. Version 1.7.0 · 2026-10-20.
+Developer tests of the working prompt, the acceptance rule they are read against and the log of every run. Version 1.7.1 · 2026-10-26.
 
 ## 1. Cases
 
@@ -13,9 +13,13 @@ Each case is one fresh session: the prompt loaded as everything below its horizo
 
 ## 2. Acceptance rule
 
+**From 26 October 2026 (KST)** acceptance is read under the account rule, [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md). The rule below is the one the runs logged before that date were read under, kept as their record.
+
 No acceptance rule was published before the first run. For v1.6.0: a configuration (prompt version plus model) is accepted when both cases pass in the same run and a named reviewer has confirmed the scores. LLM scoring is developer testing, not independent assurance. A failed case stays in the log with its session review.
 
 ## 3. Last run
+
+**Status under [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 26 October 2026 (KST).** Not accepted. Prompt v1.7.0 has no logged run; the run of v1.6.0 (T5, 18 October 2026) failed both cases, RI-01 and RI-02. **Critical cases:** none.
 
 **Run T5, 18 October 2026 (Korea Standard Time, KST).** Configuration:
 
