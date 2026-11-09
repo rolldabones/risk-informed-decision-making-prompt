@@ -1,6 +1,6 @@
 # Tests
 
-Developer tests of the working prompt, the acceptance rule they are read against and the log of every run. Version 1.7.2 · 2026-10-26.
+Developer tests of the working prompt, the acceptance rule they are read against and the log of every run. Version 1.7.3 · 2026-11-09.
 
 ## 1. Cases
 
@@ -19,7 +19,7 @@ No acceptance rule was published before the first run. For v1.6.0: a configurati
 
 ## 3. Last run
 
-**Status under [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 26 October 2026 (KST).** Not accepted. Run R1 (26 October 2026) of the published prompt failed both cases after review, RI-01 and RI-02, on the open defects K1 and K3. **Critical cases:** none. The earlier status of this line, that prompt v1.7.0 had no logged run, was replaced the same day by run R1.
+**Status under [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 26 October 2026 (KST), unchanged at v1.7.3 (9 November 2026).** Not accepted. Run R1 (26 October 2026) of the published prompt failed both cases after review, RI-01 and RI-02, on the open defects K1 and K3. **Critical cases:** none. The earlier status of this line, that prompt v1.7.0 had no logged run, was replaced the same day by run R1.
 
 **Run R1, 26 October 2026 (KST).** The logged run of prompt v1.7.0 that the account requires when a rule changes, read under [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md). Evidence: [evidence/transcripts-2026-10-26-R1/](evidence/transcripts-2026-10-26-R1/README.md). Configuration:
 

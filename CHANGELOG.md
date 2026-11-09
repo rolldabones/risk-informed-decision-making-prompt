@@ -2,6 +2,13 @@
 
 All notable changes to this repository are documented here. Versioning follows [Semantic Versioning](https://semver.org/). The README and this file version in lockstep; prior versions are superseded, never silently overwritten.
 
+## v1.7.3 (2026-11-09)
+
+Patch release. Train D of the improvement rotation (review of 24 October 2026). Prepared with Claude, approved by Michael Paik.
+
+- README, License: one line points to `rolldabones/LICENSING.md` (v1.0.0, new), which states once what the account's two licenses permit, that a Client's use in its own operations may fall outside NonCommercial, how to ask and why the two licenses do not mix.
+- README, `tests.md` and `CITATION.cff` to v1.7.3, the `tests.md` status line recording acceptance unchanged at v1.7.3; no prompt, case or run record changed.
+
 ## v1.7.2 (2026-10-26)
 
 Patch release, record only. **Run R1 logged:** prompt v1.7.0 on `claude-opus-5-5`, scored by `claude-sonnet-5-5`, max_tokens 64,000, the cases of run T5 unchanged. Scorer: RI-01 FAIL, RI-02 PASS. Session review: RI-01 concur (K1, K3); RI-02 dissent to FAIL, because its turn ends with a closing line after OUTCOME, the line the scorer failed in RI-01 and run T5 failed in RI-02 (K3). **Not accepted** under `ACCEPTANCE.md` in the `rolldabones` repository; reviewer Michael Paik concurring per case. K1 and K3 recur; K2 did not. No rule in the prompt changed. `tests.md` (Last run, known defects, run log, status) and the README status line updated; transcripts in `evidence/transcripts-2026-10-26-R1/`. Prepared with Claude, approved by Michael Paik.
