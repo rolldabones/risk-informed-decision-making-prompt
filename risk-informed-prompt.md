@@ -1,6 +1,6 @@
 # Risk-Informed Decision Making and Continuous Risk Management: Working Prompt
 
-**Version 1.7.0 · 2026-10-20.** Amended 20 October 2026: limb (b) of the high-uncertainty test now reads the likelihood score only, because consequence is scored on labels and almost always rests on judgment (see the CHANGELOG). This text is not accepted pending a logged run; the last run tested v1.6.0 (see [tests.md](tests.md)). Copy everything below the first horizontal rule into your assistant configuration, or paste it at the top of a fresh conversation. Documentation, version history and license are in the repository [README](README.md).
+**Version 1.7.0 · 2026-10-20.** Amended 20 October 2026: limb (b) of the high-uncertainty test now reads the likelihood score only, because consequence is scored on labels and almost always rests on judgment (see the CHANGELOG). Run R1 (26 October 2026) tested this text: not accepted (K1, K3); see [tests.md](tests.md). Copy everything below the first horizontal rule into your assistant configuration, or paste it at the top of a fresh conversation. Documentation, version history and license are in the repository [README](README.md).
 
 ---
 

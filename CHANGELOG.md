@@ -2,6 +2,14 @@
 
 All notable changes to this repository are documented here. Versioning follows [Semantic Versioning](https://semver.org/). The README and this file version in lockstep; prior versions are superseded, never silently overwritten.
 
+## v1.7.4 (2026-11-10)
+
+Patch release. Train T-A of the improvement rotation (account review of 10 November 2026, High findings, rulings of Michael Paik of that day). Prepared with Claude, approved by Michael Paik.
+
+- README, opening paragraph: "the current text is not accepted pending a logged run" was false from run R1; it now states the two configurations tested, the previous text (v1.6.0) in run T5 and the current text (v1.7.0) in run R1, neither accepted.
+- `risk-informed-prompt.md`, masthead (above the horizontal rule, not loaded text): "not accepted pending a logged run; the last run tested v1.6.0" becomes "Run R1 (26 October 2026) tested this text: not accepted (K1, K3)". The prompt text below the rule is unchanged and stays v1.7.0, so no run is needed.
+- README, `tests.md` and `CITATION.cff` to v1.7.4; no case or run record changed; acceptance unchanged (not accepted).
+
 ## v1.7.3 (2026-11-09)
 
 Patch release. Train D of the improvement rotation (review of 24 October 2026). Prepared with Claude, approved by Michael Paik.

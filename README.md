@@ -2,11 +2,11 @@
 
 *Human-made, for Easy Work, Simply Done*
 
-**Version 1.7.3 · 2026-11-09 · License: [CC BY-NC-SA 4.0](LICENSE.md) · Changes: [CHANGELOG.md](CHANGELOG.md)**
+**Version 1.7.4 · 2026-11-10 · License: [CC BY-NC-SA 4.0](LICENSE.md) · Changes: [CHANGELOG.md](CHANGELOG.md)**
 
 **Acceptance status ([ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 26 October 2026, KST):** Not accepted. Run R1 (26 October 2026) of the published prompt failed both cases after review, RI-01 and RI-02, on the open defects K1 and K3. The account's status table is in [ECOSYSTEM.md](https://github.com/rolldabones/rolldabones/blob/main/ECOSYSTEM.md#instrument-status).
 
-A model-agnostic working prompt for decision making and risk management under uncertainty, tuned for frontier-class models. The only configuration tested so far, the previous prompt text on `claude-opus-5-5`, was not accepted, and the current text is not accepted pending a logged run; see [tests.md](tests.md).
+A model-agnostic working prompt for decision making and risk management under uncertainty, tuned for frontier-class models. Two configurations have been tested on `claude-opus-5-5`, the previous prompt text in run T5 (18 October 2026) and the current text in run R1 (26 October 2026); neither was accepted; see [tests.md](tests.md).
 
 **How to use.** Open [risk-informed-prompt.md](risk-informed-prompt.md) and copy everything below its first horizontal rule. Load it as the system prompt, or paste it at the top of a fresh conversation, then state your decision or risk matter and attach any source documents. The model classifies the matter (select, manage or both), runs the matching phase and scores against a fixed convention. It will not assign a criticality band without your organization's approved risk matrix: supply it as an input, or the analysis stops at the likelihood and consequence pair and records the matrix as a gap. Every response closes with status, gaps and a bias note. Allow an output budget above 16,000 tokens: in testing, a 16,000-token limit returned no text in any turn, and 64,000 completed the run.
 
@@ -52,7 +52,7 @@ Nearest neighbors:
 
 ## How to Cite
 
-> Paik, Son-U Michael. *Risk-Informed Decision Making and Continuous Risk Management*, v1.7.3. GRC Solutions Korea, 2026. https://github.com/rolldabones/risk-informed-decision-making-prompt
+> Paik, Son-U Michael. *Risk-Informed Decision Making and Continuous Risk Management*, v1.7.4. GRC Solutions Korea, 2026. https://github.com/rolldabones/risk-informed-decision-making-prompt
 
 A machine-readable citation is in [CITATION.cff](CITATION.cff).
 
