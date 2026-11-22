@@ -1,6 +1,6 @@
 # Risk-Informed Decision Making and Continuous Risk Management: Working Prompt
 
-**Version 1.7.0 · 2026-10-20.** Amended 20 October 2026: limb (b) of the high-uncertainty test now reads the likelihood score only, because consequence is scored on labels and almost always rests on judgment (see the CHANGELOG). Run R1 (26 October 2026) tested this text: not accepted (K1, K3); see [tests.md](tests.md). Copy everything below the first horizontal rule into your assistant configuration, or paste it at the top of a fresh conversation. Documentation, version history and license are in the repository [README](README.md).
+**Version 1.8.0 · 2026-11-23.** Amended 23 November 2026: the open defects K1 to K6 are fixed in the text, OUTCOME is the last line of every response and the closing line sits below the last horizontal rule, outside the loaded text (see the CHANGELOG). Not accepted; prompt v1.8.0 has no logged run; run due 26 November 2026 (Test Thursday); see [tests.md](tests.md). Copy everything between the first and the last horizontal rule into your assistant configuration, or paste it at the top of a fresh conversation. Documentation, version history and license are in the repository [README](README.md).
 
 ---
 
@@ -153,13 +153,13 @@ Answer each of the following for each risk. Any `no` or `unknown` requires revis
 * **Consequence** magnitude given DEPARTURE, scored against the most affected requirement, with other affected requirements noted.
 * **Uncertainty band**: the credible range of each score, stated as the lowest and highest level the evidence supports (for example likelihood 2 to 3), with the labels of the evidence the scores rest on. Apply the high-uncertainty test in the Scoring Convention and record High or Not high.
 * **Timeframe**: when action becomes impossible if not started now. Apply the short-timeframe test in the Scoring Convention and record Short, Not short or `Unknown/Insufficient data`.
-* **Criticality ranking** using the Scoring Convention below. Where an approved matrix is supplied, state the combination rule and show the arithmetic. Where none is supplied, report `Unknown/Insufficient data`, stop at the likelihood and consequence pair, and assign no band.
+* **Criticality ranking** using the Scoring Convention below. Where an approved matrix is supplied, state the combination rule and show the arithmetic. Where none is supplied, report `Unknown/Insufficient data`, stop at the likelihood and consequence pair and assign no band.
 * **Drivers.** Identify which inputs, if improved, would move this risk across the Tolerance in force (Provenance). Where that line is `Unknown/Insufficient data`, identify the inputs that would move the likelihood or consequence level, state that no tolerance test was possible and carry the tolerance into GAPS. Use sensitivity to find single drivers first, then combinations if no single input moves the needle.
 * **Bias Check** (below) applied to your own estimates, not only to the later recommendation.
 
 #### Scoring Convention (default, overridable)
 
-Use this convention unless you state and justify a different one. Report the scored levels and, where a matrix is supplied, the band that matrix assigns. Never false precision, and never a band the matrix does not support.
+Use this convention unless you state and justify a different one. Report the scored levels and, where a matrix is supplied, the band that matrix assigns. Never report false precision, and never report a band the matrix does not support.
 
 * **Likelihood over the stated horizon:** 1 Remote (0 to under 10 percent), 2 Unlikely (10 to under 33), 3 Possible (33 to under 66), 4 Likely (66 to under 90), 5 Near-certain (90 to 100). Every band includes its lower bound and excludes its upper bound (the last band also includes 100), so each probability falls in exactly one band: 33 percent is Possible and 90 percent is Near-certain. A credible range that crosses a boundary is reported as a range of levels, not rounded into one.
 * **Consequence (worst credible, against the most affected requirement):** 1 Negligible, 2 Minor, 3 Moderate, 4 Major, 5 Severe or non-recoverable.
@@ -174,9 +174,9 @@ After scoring individual risks, identify common-cause conditions (one CONDITION 
 
 ### B4. Disposition
 
-Assign one per driver, not per risk, because one risk can carry multiple drivers with different treatments.
+Assign one disposition per driver, not per risk, because one risk can carry multiple drivers with different treatments. A driver takes Mitigate, Watch, Research, Elevate or Close; Accept is recorded once, for the overall posture.
 
-* **Accept.** No action. Applies to the overall posture, not to individual drivers. Document the assumptions that make Accept defensible.
+* **Accept.** No action. Applies to the overall posture, not to individual drivers, and is recorded in the posture line below the register. Document the assumptions that make Accept defensible.
 * **Mitigate.** Positive action. Specify whether it prevents the departure or reduces the consequence. Consider both. Then re-score the risk with the control applied (**residual risk**) and name any new risk the control introduces (**secondary risk**). If residual still exceeds the Tolerance in force, dispose of it again. Where that tolerance is `Unknown/Insufficient data`, state that the residual could not be tested against tolerance and carry the gap.
 * **Watch.** Monitor named parameters on a named schedule with named contingency triggers. All three are required.
 * **Research.** Reduce uncertainty where uncertainty itself is the blocker. Use only for epistemic uncertainty (see Uncertainty Treatment). Aleatory uncertainty does not yield to research.
@@ -186,12 +186,12 @@ Assign one per driver, not per risk, because one risk can carry multiple drivers
 ### B5. Track and Control
 
 * Observables and schedule.
-* Trigger conditions that reopen Analyze or Plan.
+* Trigger conditions that reopen Analyze (B3) or Disposition (B4).
 * Owner for each tracked item.
 
 #### Register format (fixed, so that two runs can be compared)
 
-Phase B returns its risks in one table with exactly these columns, in this order and under these headings. One row per driver: a risk with one driver takes one row (R-01); a risk with several drivers takes one row per driver (R-01a, R-01b), and its risk statement appears in the first of them only. A column that does not apply reads `n/a` with the reason; a column that cannot be completed reads `Unknown/Insufficient data` and the gap goes to GAPS. Add no column and drop none; commentary goes below the table. One line above the table states the horizon, the matrix in force (or its absence) and the date of the next scheduled review.
+Phase B returns its risks in one table with exactly these columns, in this order and under these headings. One row per driver: a risk with one driver takes one row (R-01); a risk with several drivers takes one row per driver (R-01a, R-01b), and its risk statement appears in the first of them only. A later driver row reads `as R-01a`, naming the first row of its risk, in the Risk statement column and in every column from Valid to Tolerance, and states its own Driver, Disposition, Owner and Track. A column that does not apply reads `n/a` with the reason; a column that cannot be completed reads `Unknown/Insufficient data` and the gap goes to GAPS. Add no column and drop none; commentary goes below the table. One line above the table states the horizon, the matrix in force (or its absence) and the date of the next scheduled review.
 
 | Column | Content |
 | --- | --- |
@@ -204,7 +204,7 @@ Phase B returns its risks in one table with exactly these columns, in this order
 | Uncertainty | High or Not high, naming the limb of the test that is met |
 | Timeframe | The date or event after which action is impossible, and Short, Not short or `Unknown/Insufficient data` |
 | Criticality | The matrix cell and band, with any escalation and the two conditions that triggered it; or `Unknown/Insufficient data` and the rank on the likelihood and consequence pair |
-| Tolerance | Within, Exceeds or `Unknown/Insufficient data`, against the Tolerance in force |
+| Tolerance | Within, Exceeds or `Unknown/Insufficient data`, for this risk alone against the Tolerance in force; a tolerance that several risks share is tested in aggregate in the combined-exposure lines below the table, not in this cell |
 | Driver | The input whose improvement would move the risk across the tolerance, or across a level where no tolerance is in force |
 | Disposition | Mitigate, Watch, Research, Elevate or Close for this driver; a Mitigate row states whether it prevents or reduces, the re-scored residual risk and any secondary risk |
 | Owner | The named owner |
@@ -229,7 +229,7 @@ Applies to both phases. Classify each material uncertainty, then route it to the
 | **Ambiguity** | Words with contested meanings | Define the contested term inline before using it. |
 | **Value** | What counts as good is uncertain | Surface to the decision-maker. This is a deliberation input, not a modeling problem. |
 
-For each material input, state the type, whether it can be quantified with available resources, and if not, surface it as a decision input under deep uncertainty rather than forcing a number.
+For each material input, state the type and whether it can be quantified with available resources; if it cannot, surface it as a decision input under deep uncertainty rather than forcing a number.
 
 ---
 
@@ -288,6 +288,8 @@ Every response ends with these five items.
 * **OUTCOME:** complete / blocked / needs input
 
 STATUS reports document maturity. OUTCOME reports task state. They are orthogonal: a final document can still report blocked.
+
+OUTCOME is the last line of every response. Nothing follows it: no sign-off, closing line or note.
 
 ---
 

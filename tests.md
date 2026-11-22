@@ -1,10 +1,12 @@
 # Tests
 
-Developer tests of the working prompt, the acceptance rule they are read against and the log of every run. Version 1.7.4 · 2026-11-10.
+Developer tests of the working prompt, the acceptance rule they are read against and the log of every run. Version 1.8.0 · 2026-11-23.
 
 ## 1. Cases
 
-Each case is one fresh session: the prompt loaded as everything below its horizontal rule, then the case's turns. The second turn of each case reads: "If your previous reply was the complete analysis, reply only: Analysis complete above. Otherwise proceed on the facts given and deliver the full analysis; record anything missing as an open item." The turn that delivers the analysis is scored. The full inputs and pass conditions are in the transcripts under [evidence/](evidence/transcripts-2026-10-18-T5/README.md).
+**The suite for prompt v1.8.0** is [tests/prompt-cases.md](tests/prompt-cases.md): three cases, RI-01 to RI-03, each with its literal run inputs, its pass condition and the Critical cases line, run by [tests/run_prompt_cases.py](tests/run_prompt_cases.py) and scored by [tests/score_prompt_cases.py](tests/score_prompt_cases.py) (`claude-opus-5-5` scored by `claude-sonnet-5-5`, max_tokens 64,000, output tokens logged per turn). RI-01 and RI-02 carry the inputs of runs T5 and R1 byte for byte, with their pass conditions repaired (elements (4) and (5): a row whose risk fails B2 reads n/a, and later driver rows repeat by reference; element (8): nothing follows OUTCOME); RI-01 runs two samples, so that a run shows whether its scores repeat; RI-03 is new and tests the no-matrix path. Turn 2 is not scored when Turn 1 delivered the analysis.
+
+**Cases as run in T5 and R1 (record).** Each case was one fresh session: the prompt loaded as everything below its first horizontal rule, then the case's turns. The second turn of each case read: "If your previous reply was the complete analysis, reply only: Analysis complete above. Otherwise proceed on the facts given and deliver the full analysis; record anything missing as an open item." The turn that delivered the analysis was scored. Those inputs and pass conditions are in the transcripts under evidence/ ([T5](evidence/transcripts-2026-10-18-T5/README.md), [R1](evidence/transcripts-2026-10-26-R1/README.md)).
 
 | ID | Matter (fictional) | What it tests |
 | --- | --- | --- |
@@ -19,13 +21,17 @@ No acceptance rule was published before the first run. For v1.6.0: a configurati
 
 ## 3. Last run
 
-**Status under [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 26 October 2026 (KST), unchanged at v1.7.4 (10 November 2026).** Not accepted. Run R1 (26 October 2026) of the published prompt failed both cases after review, RI-01 and RI-02, on the open defects K1 and K3. **Critical cases:** none. The earlier status of this line, that prompt v1.7.0 had no logged run, was replaced the same day by run R1.
+**Status under [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 23 November 2026 (Korea Standard Time, KST).** Not accepted; prompt v1.8.0 has no logged run; run due 26 November 2026 (Test Thursday). Run R1 (26 October 2026) of prompt v1.7.0 failed both cases after review, RI-01 and RI-02, on the defects K1 and K3, which v1.8.0 fixes in the text.
+
+**Critical cases:** RI-02 and RI-03 (no-invention: a risk tolerance or risk matrix not supplied reads `Unknown/Insufficient data` and is never supplied by the model), on Michael Paik's ruling of 23 November 2026 (KST).
+
+Runs T5 and R1 were read with no critical case named; their record below is unchanged.
 
 **Run R1, 26 October 2026 (KST).** The logged run of prompt v1.7.0 that the account requires when a rule changes, read under [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md). Evidence: [evidence/transcripts-2026-10-26-R1/](evidence/transcripts-2026-10-26-R1/README.md). Configuration:
 
 | Field | Entry |
 | --- | --- |
-| Instruction text | [risk-informed-prompt.md](risk-informed-prompt.md) v1.7.0, everything below its horizontal rule, 23,073 bytes, SHA-256 `4263af696112a4bd01a22ec540838e317c9e9c8f759892f1c31bd6d317864645`; repository HEAD `a2a459f` (v1.7.1) |
+| Instruction text | [risk-informed-prompt.md](risk-informed-prompt.md) v1.7.0, everything below its horizontal rule, 23,073 bytes, Secure Hash Algorithm 256-bit (SHA-256) digest `4263af696112a4bd01a22ec540838e317c9e9c8f759892f1c31bd6d317864645`; repository HEAD `a2a459f` (v1.7.1) |
 | Tested model | `claude-opus-5-5` |
 | Scorer | `claude-sonnet-5-5` |
 | Harness | As run T5: Anthropic API, the instruction text as the system prompt, no tools, max_tokens 64,000, streamed; cases RI-01 and RI-02 unchanged; no turn truncated |
@@ -38,17 +44,17 @@ No acceptance rule was published before the first run. For v1.6.0: a configurati
 | RI-01 | | (8) Required Close last | Concur, instrument defect (K3) | The turn ends with "Final liability rests with the human decision-maker." after OUTCOME |
 | RI-01 | | all other elements | Concur with the scorer's met | Half-open bands, the matrix arithmetic and escalation on both conditions held; BOTH classified with Phase A first; driver rows read "as R-01a" |
 | RI-02 | PASS | (8) Required Close last | **Dissent to FAIL,** instrument defect (K3) | The turn ends with "*Final liability rests with the human decision-maker.*" after OUTCOME. The scorer passed the line as the instrument's sign-off and failed the same line in RI-01; run T5 failed RI-02 on it |
-| RI-02 | | all other elements | Concur with the scorer's met | MANAGE with no Phase A; Tolerance in force and every Tolerance cell `Unknown/Insufficient data`; the missing tolerance in GAPS; driver rows read "as R-01a" |
+| RI-02 | | all other elements | Concur with the scorer's met | MANAGE with no Phase A; Tolerance in force and every Tolerance cell `Unknown/Insufficient data`; the missing tolerance in GAPS; driver rows repeat by reference ("as R-01a", "as R-02a"); R-03 fails B2 and is not scored |
 
-**Counts, run R1.** Scorer: 1 PASS, 1 FAIL, 0 unscorable, 0 truncated. Session review: 1 dissent to FAIL (RI-02, element (8)); after review 0 PASS, 2 FAIL. Both failures are instrument defects already open (K1, K3), disposed fix in the next text, which needs its own run; K2 did not recur. **Acceptance: not accepted.** Open cases: RI-01, RI-02. Reviewer: Michael Paik, 26 October 2026 (KST), concurs per case.
+**Counts, run R1.** Scorer: 1 PASS, 1 FAIL, 0 unscorable, 0 truncated. Session review: 1 dissent to FAIL (RI-02, element (8)); after review 0 PASS, 2 FAIL. Both failures are instrument defects already open (K1, K3); their disposition is a fix in the next text, which needs its own run; K2 did not recur. **Acceptance: not accepted.** Open cases: RI-01, RI-02. Reviewer: Michael Paik, 26 October 2026 (KST), concurs per case.
 
 **Earlier run.**
 
-**Run T5, 18 October 2026 (Korea Standard Time, KST).** Configuration:
+**Run T5, 18 October 2026 (KST).** Configuration:
 
 | Field | Entry |
 | --- | --- |
-| Instruction text | [risk-informed-prompt.md](risk-informed-prompt.md) v1.6.0, everything below its horizontal rule, 23,098 bytes, Secure Hash Algorithm 256-bit (SHA-256) digest `978a7594bc005b442f15c72300d03c06a5fa475448d88fc643ea14b9c0fe9251` |
+| Instruction text | [risk-informed-prompt.md](risk-informed-prompt.md) v1.6.0, everything below its horizontal rule, 23,098 bytes, SHA-256 `978a7594bc005b442f15c72300d03c06a5fa475448d88fc643ea14b9c0fe9251` |
 | Tested model | `claude-opus-5-5` |
 | Scorer | `claude-sonnet-5-5`, a different model, so no model graded itself |
 | Harness | Anthropic API, the instruction text as the system prompt, no tools, max_tokens 64,000, streamed |
@@ -72,22 +78,24 @@ No acceptance rule was published before the first run. For v1.6.0: a configurati
 
 Independent review, 20 October 2026: RI-01 shows the two behaviors charged to RI-02. Its Bias Check cells add text after the label ("Live risk, not yet countered. The favourable evidence for A comes from ..."; "Not applicable. Each estimate was set by one individual"), as on RI-02's element (6), and its turn ends with "*Final liability rests with the Human.*" after OUTCOME, as on RI-02's element (8). The scoring and the concurrence above stand as recorded.
 
-**Current text.** Prompt v1.7.0 narrows limb (b) of the high-uncertainty test to the likelihood score. Run R1 of 26 October 2026, above, ran it: **not accepted.**
+**Current text.** Prompt v1.8.0 (23 November 2026) fixes K1 to K6 in the text and moves the closing line below the last horizontal rule, outside the loaded text. Loaded text, the text between the first and the last horizontal rule without the blank lines next to either: 23,689 bytes, SHA-256 `6a011782efdc1531108c2746a16f7539319596cc375310c858dd651d0e137132`. It has no logged run; the run is due 26 November 2026 (Test Thursday) on [tests/prompt-cases.md](tests/prompt-cases.md). **Not accepted.**
+
+**Earlier text.** Prompt v1.7.0 narrowed limb (b) of the high-uncertainty test to the likelihood score. Run R1 of 26 October 2026, above, ran it: **not accepted.**
 
 The RI-01 transcript is published as [examples/sample-run-transcript.md](examples/sample-run-transcript.md), labeled as a generated run that failed its case.
 
 ## 4. Known defects
 
-K1 to K3 were recorded from run T5; K4 to K6 from the independent review of 20 October 2026. All six are open. v1.7.0 changes one rule (limb (b)) and fixes none of them, because each fix is a new text and needs a new run. Run R1 (26 October 2026) shows K1 in RI-01 and K3 in both cases again; K2 did not recur.
+K1 to K3 were recorded from run T5; K4 to K6 from the independent review of 20 October 2026. v1.7.0 changed one rule (limb (b)) and fixed none of them. Run R1 (26 October 2026) showed K1 in RI-01 and K3 in both cases again; K2 did not recur. **Prompt v1.8.0 (23 November 2026) fixes all six in the text** (the last column below); each fix stays untested until a logged run of v1.8.0.
 
-| ID | Defect | Text | Effect |
-| --- | --- | --- | --- |
-| K1 | The Tolerance column does not say whether it tests the risk alone or in aggregate with the risks that share a requirement | "Within, Exceeds or `Unknown/Insufficient data`, against the Tolerance in force" | A requirement-level tolerance shared by several risks yields a compound cell (RI-01, R-02a) |
-| K2 | The register format does not say what a second or later driver row carries in the risk-level columns (Likelihood to Criticality) | "a risk with several drivers takes one row per driver (R-01a, R-01b), and its risk statement appears in the first of them only" | One run repeats by reference ("as R-01a"), another writes `n/a`; two runs are not comparable on those cells |
-| K3 | "Every response ends with these five items" sits in a text whose own last line is the closing line "Final Liability rests with the Human." | Required Close; the final line of the prompt | The model appends a closing line after OUTCOME (both cases) |
-| K4 | B5 names a section that does not exist; B4 is "Disposition" | "Trigger conditions that reopen Analyze or Plan" | A reader or model cannot tell which section a trigger reopens |
-| K5 | A Scoring Convention sentence has no verb | "Never false precision, and never a band the matrix does not support." | The rule reads as a fragment; its intent (no false precision, no band the matrix does not support) is clear but not stated as an instruction |
-| K6 | B4 assigns one disposition per driver, but Accept "Applies to the overall posture, not to individual drivers" (deferred item A21: permit Accept per driver) | "Assign one per driver"; the Accept bullet | The two rules pull against each other; the register records Accept in a posture line below the table |
+| ID | Defect | Text | Effect | Fix in v1.8.0 |
+| --- | --- | --- | --- | --- |
+| K1 | The Tolerance column does not say whether it tests the risk alone or in aggregate with the risks that share a requirement | "Within, Exceeds or `Unknown/Insufficient data`, against the Tolerance in force" | A requirement-level tolerance shared by several risks yields a compound cell (RI-01, R-02a) | The Tolerance cell tests the risk alone; a tolerance several risks share is tested in aggregate in the combined-exposure lines below the table |
+| K2 | The register format does not say what a second or later driver row carries in the risk-level columns (Likelihood to Criticality) | "a risk with several drivers takes one row per driver (R-01a, R-01b), and its risk statement appears in the first of them only" | One run repeats by reference ("as R-01a"), another writes `n/a`; two runs are not comparable on those cells | A later driver row reads `as R-01a` in the Risk statement column and from Valid to Tolerance, and states its own Driver, Disposition, Owner and Track |
+| K3 | "Every response ends with these five items" sits in a text whose own last line is the closing line "Final Liability rests with the Human." | Required Close; the final line of the prompt | The model appends a closing line after OUTCOME (both cases), and the line it appends varies the doctrine wording ("Final liability rests with the human decision-maker.") | "OUTCOME is the last line of every response. Nothing follows it"; the closing line sits below the last horizontal rule, outside the loaded text |
+| K4 | B5 names a section that does not exist; B4 is "Disposition" | "Trigger conditions that reopen Analyze or Plan" | A reader or model cannot tell which section a trigger reopens | "reopen Analyze (B3) or Disposition (B4)" |
+| K5 | A Scoring Convention sentence has no verb | "Never false precision, and never a band the matrix does not support." | The rule reads as a fragment; its intent (no false precision, no band the matrix does not support) is clear but not stated as an instruction | "Never report false precision, and never report a band the matrix does not support." |
+| K6 | B4 assigns one disposition per driver, but Accept "Applies to the overall posture, not to individual drivers" (deferred item A21: permit Accept per driver) | "Assign one per driver"; the Accept bullet | The two rules pull against each other; the register records Accept in a posture line below the table | B4 names the per-driver dispositions; Accept is recorded once, for the overall posture, in the posture line below the register |
 
 ## 5. Run log
 
