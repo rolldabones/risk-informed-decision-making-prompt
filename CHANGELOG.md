@@ -2,6 +2,15 @@
 
 All notable changes to this repository are documented here. Versioning follows [Semantic Versioning](https://semver.org/). The README and this file version in lockstep; prior versions are superseded, never silently overwritten.
 
+## v1.9.0 (2026-11-23)
+
+Minor, because a rule in the working prompt changes what a run must produce. Second release of the day, in a remediation session Michael Paik opened after the Monday run on the Guild House evaluation of 23 November 2026, ruling 1 (a completion under `account-maintenance` HANDBOOK.md section 9), approved by Michael Paik the same day. Prepared with Claude, approved by Michael Paik. Dates are Korea Standard Time (KST). **Status: not accepted; prompt v1.9.0 has no logged run; run due 26 November 2026 (Test Thursday), which now runs v1.9.0 in place of v1.8.0.**
+
+- **Prompt v1.9.0.** `risk-informed-prompt.md` is re-versioned 1.8.0 to 1.9.0 with a dated amendment note. The Scoring Convention gains one bullet after Criticality: where the supplied matrix bands by multiplying or adding the likelihood and consequence levels, the rule is applied as the organization's convention and the output states once that the levels are ordinal, so the product or sum places a risk in a band and carries no magnitude; risks are never ordered by the size of the product or sum, products are never averaged or compared across matrices, and within a band risks are ordered on the likelihood and consequence pair with the ordering rule stated. The prompt already refused to assign a band without the organization's matrix; this completes that rule for matrices whose own banding multiplies ordinal levels, as the suite's Corvane matrix does. Loaded text: 24,274 bytes, SHA-256 `2355229a4330d0b3b5fcebe316ebc2dfa88b14058b57935202a1f42829065e5a`.
+- **Suite.** `tests/prompt-cases.md` adds RI-01 element (12): the turn states once that the matrix's product rule bands a risk and measures nothing, the levels being ordinal, and orders no risk above another by the size of its product alone. Turn 1 inputs and their SHA-256 values are unchanged.
+- **README.** The lineage cites the sources of the new rule: L. A. Cox, "What's Wrong with Risk Matrices?", *Risk Analysis* 28(2): 497 to 512 (2008), and D. W. Hubbard, *The Failure of Risk Management*, 2nd ed. (Wiley, 2020), both checked against their publishers' records on 23 November 2026. Nothing from either is quoted.
+- README masthead, status line, How to Cite, `CITATION.cff`, the `tests.md` masthead, status and Current text, and the suite masthead to v1.9.0.
+
 ## v1.8.0 (2026-11-23)
 
 Minor, because rules in the working prompt change what a run must produce. Rotation slot of 23 November 2026 (cycle 3, row 5), Gate 1 rows R37 to R41, approved by Michael Paik the same day. Prepared with Claude, approved by Michael Paik. Dates are Korea Standard Time (KST). **Status: not accepted; prompt v1.8.0 has no logged run; run due 26 November 2026 (Test Thursday).**

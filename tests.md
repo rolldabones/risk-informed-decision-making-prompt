@@ -1,10 +1,10 @@
 # Tests
 
-Developer tests of the working prompt, the acceptance rule they are read against and the log of every run. Version 1.8.0 · 2026-11-23.
+Developer tests of the working prompt, the acceptance rule they are read against and the log of every run. Version 1.9.0 · 2026-11-23.
 
 ## 1. Cases
 
-**The suite for prompt v1.8.0** is [tests/prompt-cases.md](tests/prompt-cases.md): three cases, RI-01 to RI-03, each with its literal run inputs, its pass condition and the Critical cases line, run by [tests/run_prompt_cases.py](tests/run_prompt_cases.py) and scored by [tests/score_prompt_cases.py](tests/score_prompt_cases.py) (`claude-opus-5-5` scored by `claude-sonnet-5-5`, max_tokens 64,000, output tokens logged per turn). RI-01 and RI-02 carry the inputs of runs T5 and R1 byte for byte, with their pass conditions repaired (elements (4) and (5): a row whose risk fails B2 reads n/a, and later driver rows repeat by reference; element (8): nothing follows OUTCOME); RI-01 runs two samples, so that a run shows whether its scores repeat; RI-03 is new and tests the no-matrix path. Turn 2 is not scored when Turn 1 delivered the analysis.
+**The suite for prompt v1.9.0** is [tests/prompt-cases.md](tests/prompt-cases.md): three cases, RI-01 to RI-03, each with its literal run inputs, its pass condition and the Critical cases line, run by [tests/run_prompt_cases.py](tests/run_prompt_cases.py) and scored by [tests/score_prompt_cases.py](tests/score_prompt_cases.py) (`claude-opus-5-5` scored by `claude-sonnet-5-5`, max_tokens 64,000, output tokens logged per turn). RI-01 and RI-02 carry the inputs of runs T5 and R1 byte for byte, with their pass conditions repaired (elements (4) and (5): a row whose risk fails B2 reads n/a, and later driver rows repeat by reference; element (8): nothing follows OUTCOME); RI-01 runs two samples, so that a run shows whether its scores repeat; RI-03 is new and tests the no-matrix path; RI-01 element (12), added with v1.9.0, tests that the product rule is stated as a banding convention over ordinal levels. Turn 2 is not scored when Turn 1 delivered the analysis.
 
 **Cases as run in T5 and R1 (record).** Each case was one fresh session: the prompt loaded as everything below its first horizontal rule, then the case's turns. The second turn of each case read: "If your previous reply was the complete analysis, reply only: Analysis complete above. Otherwise proceed on the facts given and deliver the full analysis; record anything missing as an open item." The turn that delivered the analysis was scored. Those inputs and pass conditions are in the transcripts under evidence/ ([T5](evidence/transcripts-2026-10-18-T5/README.md), [R1](evidence/transcripts-2026-10-26-R1/README.md)).
 
@@ -21,7 +21,7 @@ No acceptance rule was published before the first run. For v1.6.0: a configurati
 
 ## 3. Last run
 
-**Status under [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 23 November 2026 (Korea Standard Time, KST).** Not accepted; prompt v1.8.0 has no logged run; run due 26 November 2026 (Test Thursday). Run R1 (26 October 2026) of prompt v1.7.0 failed both cases after review, RI-01 and RI-02, on the defects K1 and K3, which v1.8.0 fixes in the text.
+**Status under [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 23 November 2026 (Korea Standard Time, KST).** Not accepted; prompt v1.9.0 has no logged run; run due 26 November 2026 (Test Thursday). Run R1 (26 October 2026) of prompt v1.7.0 failed both cases after review, RI-01 and RI-02, on the defects K1 and K3, which v1.8.0 fixes in the text.
 
 **Critical cases:** RI-02 and RI-03 (no-invention: a risk tolerance or risk matrix not supplied reads `Unknown/Insufficient data` and is never supplied by the model), on Michael Paik's ruling of 23 November 2026 (KST).
 
@@ -78,7 +78,7 @@ Runs T5 and R1 were read with no critical case named; their record below is unch
 
 Independent review, 20 October 2026: RI-01 shows the two behaviors charged to RI-02. Its Bias Check cells add text after the label ("Live risk, not yet countered. The favourable evidence for A comes from ..."; "Not applicable. Each estimate was set by one individual"), as on RI-02's element (6), and its turn ends with "*Final liability rests with the Human.*" after OUTCOME, as on RI-02's element (8). The scoring and the concurrence above stand as recorded.
 
-**Current text.** Prompt v1.8.0 (23 November 2026) fixes K1 to K6 in the text and moves the closing line below the last horizontal rule, outside the loaded text. Loaded text, the text between the first and the last horizontal rule without the blank lines next to either: 23,689 bytes, SHA-256 `6a011782efdc1531108c2746a16f7539319596cc375310c858dd651d0e137132`. It has no logged run; the run is due 26 November 2026 (Test Thursday) on [tests/prompt-cases.md](tests/prompt-cases.md). **Not accepted.**
+**Current text.** Prompt v1.9.0 (23 November 2026, second release of the day) keeps the v1.8.0 text and adds one Scoring Convention rule: a matrix's product or sum of levels bands a risk and does not measure it. Loaded text, the text between the first and the last horizontal rule without the blank lines next to either: 24,274 bytes, SHA-256 `2355229a4330d0b3b5fcebe316ebc2dfa88b14058b57935202a1f42829065e5a`. Prompt v1.8.0 (earlier the same day) fixed K1 to K6 in the text and moved the closing line below the last horizontal rule, outside the loaded text (23,689 bytes, SHA-256 `6a011782efdc1531108c2746a16f7539319596cc375310c858dd651d0e137132`); it was never run. v1.9.0 has no logged run; the run is due 26 November 2026 (Test Thursday) on [tests/prompt-cases.md](tests/prompt-cases.md). **Not accepted.**
 
 **Earlier text.** Prompt v1.7.0 narrowed limb (b) of the high-uncertainty test to the likelihood score. Run R1 of 26 October 2026, above, ran it: **not accepted.**
 

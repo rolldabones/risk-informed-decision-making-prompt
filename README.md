@@ -2,19 +2,19 @@
 
 *Human-made, for Easy Work, Simply Done*
 
-**Version 1.8.0 · 2026-11-23 · License: [CC BY-NC-SA 4.0](LICENSE.md) · Changes: [CHANGELOG.md](CHANGELOG.md)**
+**Version 1.9.0 · 2026-11-23 · License: [CC BY-NC-SA 4.0](LICENSE.md) · Changes: [CHANGELOG.md](CHANGELOG.md)**
 
-**Acceptance status ([ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 23 November 2026, KST):** Not accepted; prompt v1.8.0 has no logged run; run due 26 November 2026 (Test Thursday). Run R1 (26 October 2026) of prompt v1.7.0 failed both cases after review on the defects K1 and K3, which v1.8.0 fixes in the text. The account's status table is in [ECOSYSTEM.md](https://github.com/rolldabones/rolldabones/blob/main/ECOSYSTEM.md#instrument-status).
+**Acceptance status ([ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 23 November 2026, KST):** Not accepted; prompt v1.9.0 has no logged run; run due 26 November 2026 (Test Thursday). Run R1 (26 October 2026) of prompt v1.7.0 failed both cases after review on the defects K1 and K3, which v1.8.0 fixes in the text. The account's status table is in [ECOSYSTEM.md](https://github.com/rolldabones/rolldabones/blob/main/ECOSYSTEM.md#instrument-status).
 
-A model-agnostic working prompt for decision making and risk management under uncertainty, tuned for frontier-class models. The current text, v1.8.0, has no logged run; its suite is [tests/prompt-cases.md](tests/prompt-cases.md) and its record is [tests.md](tests.md). Two earlier texts were tested on `claude-opus-5-5`, v1.6.0 in run T5 (18 October 2026) and v1.7.0 in run R1 (26 October 2026); neither was accepted.
+A model-agnostic working prompt for decision making and risk management under uncertainty, tuned for frontier-class models. The current text, v1.9.0, has no logged run; its suite is [tests/prompt-cases.md](tests/prompt-cases.md) and its record is [tests.md](tests.md). Two earlier texts were tested on `claude-opus-5-5`, v1.6.0 in run T5 (18 October 2026) and v1.7.0 in run R1 (26 October 2026); neither was accepted.
 
 **How to use.** Open [risk-informed-prompt.md](risk-informed-prompt.md) and copy everything between its first and its last horizontal rule. Load it as the system prompt, or paste it at the top of a fresh conversation, then state your decision or risk matter and attach any source documents. The model classifies the matter (select, manage or both), runs the matching phase and scores against a fixed convention. It will not assign a criticality band without your organization's approved risk matrix: supply it as an input, or the analysis stops at the likelihood and consequence pair and records the matrix as a gap. Every response closes with status, gaps and a bias note. Allow an output budget above 16,000 tokens: in testing, a 16,000-token limit returned no text in any turn, and 64,000 completed the run.
 
-Method lineage: risk-informed decision making (select) paired with continuous risk management (manage), after two handbooks of the National Aeronautics and Space Administration (NASA): *NASA Risk-Informed Decision Making Handbook* (NASA/SP-2010-576, v1.0, April 2010) and *NASA Risk Management Handbook* (NASA/SP-2011-3422, v1.0, November 2011). NASA's technical reports server marks the second superseded by Version 2.0 (as at 23 November 2026); the lineage cites v1.0. The risk-statement template and the Accept, Mitigate, Watch, Research, Elevate and Close dispositions come from the second. This prompt is a reasoning scaffold, not a source of authority and not a substitute for professional, legal or engineering judgment. It structures analysis. It does not certify outcomes.
+Method lineage: risk-informed decision making (select) paired with continuous risk management (manage), after two handbooks of the National Aeronautics and Space Administration (NASA): *NASA Risk-Informed Decision Making Handbook* (NASA/SP-2010-576, v1.0, April 2010) and *NASA Risk Management Handbook* (NASA/SP-2011-3422, v1.0, November 2011). NASA's technical reports server marks the second superseded by Version 2.0 (as at 23 November 2026); the lineage cites v1.0. The risk-statement template and the Accept, Mitigate, Watch, Research, Elevate and Close dispositions come from the second. The Scoring Convention's rule that a matrix's product or sum of levels bands a risk and measures nothing follows L. A. Cox, "What's Wrong with Risk Matrices?", *Risk Analysis* 28(2): 497 to 512 (2008), and D. W. Hubbard, *The Failure of Risk Management*, 2nd ed. (Wiley, 2020). This prompt is a reasoning scaffold, not a source of authority and not a substitute for professional, legal or engineering judgment. It structures analysis. It does not certify outcomes.
 
 ## What to supply
 
-The prompt runs on less and says what it lacked. Two runs can be compared only when they start from the same inputs, and then only in format: no case has yet been run twice to test whether the scores repeat. The suite for v1.8.0 runs RI-01 twice, in two fresh sessions, for that purpose. Supply these, each with its source:
+The prompt runs on less and says what it lacked. Two runs can be compared only when they start from the same inputs, and then only in format: no case has yet been run twice to test whether the scores repeat. The suite for v1.9.0 runs RI-01 twice, in two fresh sessions, for that purpose. Supply these, each with its source:
 
 1. **The matter** in one or two sentences, and whether you must choose among alternatives (SELECT), manage a choice already made (MANAGE) or both.
 2. **The decision-maker** and their authority to decide.
@@ -27,7 +27,7 @@ The prompt runs on less and says what it lacked. Two runs can be compared only w
 
 Anything not supplied is marked `Unknown/Insufficient data` and listed under GAPS with the input that would close it; the model does not fill it in. Phase B returns its risks in the fixed register format the prompt specifies, so registers from two runs line up in format, column by column. [examples/sample-run-transcript.md](examples/sample-run-transcript.md) shows a full run on a fictional matter, and [tests.md](tests.md) records where that run and a second one departed from the format.
 
-**Known defects.** Prompt v1.8.0 fixes in the text the six defects listed in [tests.md](tests.md) section 4. The Tolerance cell tests a risk alone, and a shared tolerance is tested in aggregate below the table (K1). A later driver row repeats its first row by reference (K2). OUTCOME is the last line of every response, and the closing line sits outside the loaded text (K3). B5 names B3 and B4 (K4). The Scoring Convention sentence is an instruction (K5). Accept is recorded once, for the overall posture (K6). The fixes are untested until a logged run of v1.8.0; read output on those points with care.
+**Known defects.** Prompt v1.8.0 fixes in the text the six defects listed in [tests.md](tests.md) section 4. The Tolerance cell tests a risk alone, and a shared tolerance is tested in aggregate below the table (K1). A later driver row repeats its first row by reference (K2). OUTCOME is the last line of every response, and the closing line sits outside the loaded text (K3). B5 names B3 and B4 (K4). The Scoring Convention sentence is an instruction (K5). Accept is recorded once, for the overall posture (K6). The fixes are untested until a logged run of v1.9.0; read output on those points with care.
 
 ## What's in this repository
 
@@ -53,7 +53,7 @@ Nearest neighbors:
 
 ## How to Cite
 
-> Paik, Son-U Michael. *Risk-Informed Decision Making and Continuous Risk Management*, v1.8.0. GRC Solutions Korea, 2026. https://github.com/rolldabones/risk-informed-decision-making-prompt
+> Paik, Son-U Michael. *Risk-Informed Decision Making and Continuous Risk Management*, v1.9.0. GRC Solutions Korea, 2026. https://github.com/rolldabones/risk-informed-decision-making-prompt
 
 A machine-readable citation is in [CITATION.cff](CITATION.cff).
 
