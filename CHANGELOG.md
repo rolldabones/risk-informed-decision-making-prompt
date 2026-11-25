@@ -2,6 +2,14 @@
 
 All notable changes to this repository are documented here. Versioning follows [Semantic Versioning](https://semver.org/). The README and this file version in lockstep; prior versions are superseded, never silently overwritten.
 
+## v1.10.1 (2026-11-26)
+
+Patch, records only. Run R3 of 26 November 2026 (KST), the suite for prompt v1.10.0 at Test Thursday, reviewed on Michael Paik's Gate 2 rulings of that day: **not accepted**; the critical case RI-04 passed all three samples and RI-01 failed (K9). No prompt or case text changes. Prepared with Claude, approved by Michael Paik.
+
+- **`tests.md`:** run R3 is the Last run, R2 the Previous run; the status; K9 recorded (a row whose risk fails B2 carries one cell too many); the known-defects summary and the run log row.
+- **`evidence/transcripts-2026-11-26-R3/`** (new): seven transcripts, the run manifest, the scores and a README.
+- **README:** masthead, acceptance status and How to Cite; `CITATION.cff` to v1.10.1.
+
 ## v1.10.0 (2026-11-25)
 
 Minor: two prompt rules and two suite changes, built in the remediation session of 25 November 2026 (KST) on Michael Paik's Gate 2 rulings of that day and his Phase 0 approval, so that the run is made at Test Thursday on 26 November 2026. The prompt changes rules, so its status is **Not accepted; prompt v1.10.0 has no logged run.** No version of the prompt has an accepted run. Prepared with Claude, approved by Michael Paik.

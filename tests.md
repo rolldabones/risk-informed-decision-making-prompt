@@ -1,6 +1,6 @@
 # Tests
 
-Developer tests of the working prompt, the acceptance rule they are read against and the log of every run. Version 1.10.0 · 2026-11-25.
+Developer tests of the working prompt, the acceptance rule they are read against and the log of every run. Version 1.10.1 · 2026-11-26.
 
 ## 1. Cases
 
@@ -21,13 +21,36 @@ No acceptance rule was published before the first run. For v1.6.0: a configurati
 
 ## 3. Last run
 
-**Status under [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 25 November 2026 (Korea Standard Time, KST).** Not accepted; prompt v1.10.0 has no logged run (K7 and K8 fixed in the text, C1 fixed in the suite); its run, RI-01 to RI-04, is due at Test Thursday on 26 November 2026. Run R2 (25 November 2026) of prompt v1.9.0 passed 0 of 3 cases after review: the critical cases RI-02 and RI-03 and the case RI-01 failed on the register's form (K7, K8), while the no-invention rule the critical cases name held in both. No version of the prompt has an accepted run.
+**Status under [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 26 November 2026 (Korea Standard Time, KST).** Not accepted. Run R3 (26 November 2026) of prompt v1.10.0 passed the critical case RI-04 in all three samples, the first critical pass of any version, and 2 of the 3 other cases after review (66.7 percent, below the 80 percent ACCEPTANCE.md (c) requires): RI-01 failed in both samples on a row whose risk fails B2 carrying one cell too many (K9). K7 and K8 held in every sample. **Status at 25 November 2026 (KST), version 1.10.0:** not accepted; the run was due at Test Thursday on 26 November 2026. Run R2 (25 November 2026) of prompt v1.9.0 passed 0 of 3 cases after review: the critical cases RI-02 and RI-03 and the case RI-01 failed on the register's form (K7, K8), while the no-invention rule the critical cases name held in both. No version of the prompt has an accepted run.
 
 **Critical cases:** RI-04, from the suite for prompt v1.10.0, on Michael Paik's ruling of 25 November 2026 (KST) ([tests/prompt-cases.md](tests/prompt-cases.md)).
 
 Run R2 was read with RI-02 and RI-03 critical (no-invention: a risk tolerance or risk matrix not supplied reads `Unknown/Insufficient data` and is never supplied by the model), on Michael Paik's ruling of 23 November 2026 (KST); from v1.10.0 they are not critical.
 
 Runs T5 and R1 were read with no critical case named; their record below is unchanged.
+
+**Run R3, 26 November 2026 (KST).** The run of prompt v1.10.0 that the queue placed on Test Thursday, the suite [tests/prompt-cases.md](tests/prompt-cases.md), read under [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md). Evidence: [evidence/transcripts-2026-11-26-R3/](evidence/transcripts-2026-11-26-R3/README.md). Configuration:
+
+| Field | Entry |
+| --- | --- |
+| Instruction text | [risk-informed-prompt.md](risk-informed-prompt.md) v1.10.0, the loaded text, 24,658 bytes, SHA-256 `535aaf3dc0fac48b78d88e1a99775e1fd28805b187440fe707cc96f9341ef65a`; repository HEAD `95454a0` (v1.10.0) |
+| Tested model | `claude-opus-5-5` |
+| Scorer | `claude-sonnet-5-5` |
+| Harness | `tests/run_prompt_cases.py` and `tests/score_prompt_cases.py`: Anthropic API, the loaded text as the system prompt, no tools, max_tokens 64,000, streamed; RI-01 two samples, RI-04 three; no turn truncated |
+| Run label | R3 (`20261126-R3`), finished 01:06 KST |
+| Reviewer | Michael Paik, 26 November 2026 (KST); concurs per case with the session review below |
+
+| Case | Scorer verdict | Element | Session review | Reason |
+| --- | --- | --- | --- | --- |
+| RI-01 sample 1 | FAIL | (2) the register has exactly fourteen columns | Concur, instrument defect (K9) | R-04, whose risk fails B2, carries twelve "n/a: fails B2" cells where eleven belong: fifteen cells against the fourteen-column header. The R-03a Tolerance "Exceeds" against R4, which states no confidence level, is not ruled; the verdict does not rest on it |
+| RI-01 sample 2 | PASS | (2) the register has exactly fourteen columns | **Dissent to FAIL,** instrument defect (K9) | The same defect in R-04, counted by code; counted on Michael Paik's ruling of 26 November 2026 (KST). The Valid cell "3" is the prompt's own form (the numbers of the B2 questions answered no or unknown) |
+| RI-02 | PASS | all | Concur | Every Tolerance cell of a valid risk reads `Unknown/Insufficient data`; later driver rows read `as R-01a`, the prompt's form; both rows that fail B2 have fourteen cells |
+| RI-03 | PASS | all | Concur | No Criticality cell names a band, cell or escalation; conditional Track triggers are not counted (ruling of 25 November 2026) |
+| RI-04 samples 1 to 3 | PASS | (1) to (4) | Concur | Critical. Both Provenance lines read `Unknown/Insufficient data`; no Within or Exceeds; no band, matrix cell or applied escalation; both gaps listed. A noted but unapplied escalation is not an assigned one |
+
+**Counts, run R3.** Scorer: 6 PASS, 1 FAIL, 0 unscorable, 0 truncated (samples). Session review: 1 dissent to FAIL (RI-01 sample 2); after review 5 PASS, 2 FAIL; by case 3 of 4. Every sample's scorer evidence and judgment calls were read, passing samples included. K7: every Tolerance cell holds its label alone; K8: every cell from Likelihood to Track of a row whose risk fails B2 reads "n/a: fails B2 (reason)", checked by code in all seven samples. Critical case RI-04 passed; RI-01 failed ((c), 2 of 3). **Acceptance: not accepted.** The fix is ruled at the Gate 1 of 30 November 2026 and retried once on 3 December 2026 (Test Thursday).
+
+**Previous run.**
 
 **Run R2, 25 November 2026 (KST).** The logged run of prompt v1.9.0 that the account requires when a rule changes, the suite [tests/prompt-cases.md](tests/prompt-cases.md), at the first Test Thursday session, read under [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md). Evidence: [evidence/transcripts-2026-11-25-R2/](evidence/transcripts-2026-11-25-R2/README.md). Configuration:
 
@@ -51,7 +74,7 @@ Runs T5 and R1 were read with no critical case named; their record below is unch
 
 **Counts, run R2.** Scorer: 1 PASS, 3 FAIL, 0 unscorable, 0 truncated (samples). Session review: 1 dissent to FAIL (RI-01 sample 2); after review 0 PASS, 4 FAIL; by case 0 of 3. Every sample's scorer evidence and judgment calls were read. Critical cases RI-02 and RI-03 failed (ACCEPTANCE.md (b)); RI-01 failed ((c), 0 of 1). **Acceptance: not accepted.** Each fix is ruled at the Gate 1 of 30 November 2026 and retried once on 3 December 2026 (Test Thursday).
 
-**Previous run.**
+**Run before it.**
 
 **Run R1, 26 October 2026 (KST).** The logged run of prompt v1.7.0 that the account requires when a rule changes, read under [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md). Evidence: [evidence/transcripts-2026-10-26-R1/](evidence/transcripts-2026-10-26-R1/README.md). Configuration:
 
@@ -112,7 +135,7 @@ The RI-01 transcript is published as [examples/sample-run-transcript.md](example
 
 ## 4. Known defects
 
-K1 to K3 were recorded from run T5; K4 to K6 from the independent review of 20 October 2026. v1.7.0 changed one rule (limb (b)) and fixed none of them. Run R1 (26 October 2026) showed K1 in RI-01 and K3 in both cases again; K2 did not recur. **Prompt v1.8.0 (23 November 2026) fixes all six in the text** (the last column below); each fix stays untested until a logged run of v1.8.0. Run R2 (25 November 2026) of v1.9.0, which keeps those fixes, recorded K7, K8 and the case defect C1. Prompt v1.10.0 (25 November 2026) fixes K7 and K8 in the text and its suite fixes C1; each fix stays untested until a logged run of v1.10.0.
+K1 to K3 were recorded from run T5; K4 to K6 from the independent review of 20 October 2026. v1.7.0 changed one rule (limb (b)) and fixed none of them. Run R1 (26 October 2026) showed K1 in RI-01 and K3 in both cases again; K2 did not recur. **Prompt v1.8.0 (23 November 2026) fixes all six in the text** (the last column below); each fix stays untested until a logged run of v1.8.0. Run R2 (25 November 2026) of v1.9.0, which keeps those fixes, recorded K7, K8 and the case defect C1. Prompt v1.10.0 (25 November 2026) fixes K7 and K8 in the text and its suite fixes C1; each fix stays untested until a logged run of v1.10.0. Run R3 (26 November 2026) of v1.10.0: K7, K8 and C1's fix held; it recorded K9.
 
 | ID | Defect | Text | Effect | Fix in v1.8.0 |
 | --- | --- | --- | --- | --- |
@@ -125,6 +148,7 @@ K1 to K3 were recorded from run T5; K4 to K6 from the independent review of 20 O
 | K7 | Found by run R2 (25 November 2026): the Tolerance cell carries more than its label, either two values or a test of the tolerance after the label | The register's Tolerance column; element (11) of RI-01 and RI-02 | RI-01 fails in both samples (R-02a in sample 1, R-01a in sample 2) | Fixed at v1.10.0 (25 November 2026), ahead of the Gate 1 of 30 November 2026 on Michael Paik's instruction: the cell holds the label alone, and any reasoning sits in Basis or the combined-exposure lines |
 | K8 | Found by run R2 (25 November 2026): a row whose risk fails B2 does not read n/a with the reason in Uncertainty and Timeframe | B3 and the register format | RI-02 and RI-03 fail on R-03 | Fixed at v1.10.0 (25 November 2026), ahead of the Gate 1 of 30 November 2026 on Michael Paik's instruction: one exact form for every cell of such a row, "n/a: fails B2 (reason)" |
 | C1 | Case defect, found by run R2 (25 November 2026): element (11) of RI-01 and RI-02 does not exempt a row whose risk fails B2, as elements (4) and (5) do | tests/prompt-cases.md, RI-01 and RI-02 | "n/a" in such a row's Tolerance cell reads as a failure; not counted in run R2 on Michael Paik's ruling of 25 November 2026 (KST) | Fixed at v1.10.0 (25 November 2026), ahead of the Gate 1 of 30 November 2026 on Michael Paik's instruction: element (11) gains the exemption |
+| K9 | Found by run R3 (26 November 2026): a row whose risk fails B2 carries one "n/a: fails B2" cell too many, fifteen cells against the fourteen-column header | The K8 rule, "every cell from Likelihood to Track reads exactly `n/a: fails B2 (<reason>)`", which does not count the cells | RI-01 fails in both samples (R-04); the rows of RI-02, RI-03 and RI-04 have fourteen cells | Open. Disposition: fix in the next text (name the eleven cells and give one worked row), ruled at the Gate 1 of 30 November 2026 |
 
 ## 5. Run log
 
@@ -134,6 +158,7 @@ K1 to K3 were recorded from run T5; K4 to K6 from the independent review of 20 O
 | T5 | 18 Oct 2026 | v1.6.0 | `claude-opus-5-5` | `claude-sonnet-5-5` | 64,000 | RI-01 FAIL, RI-02 FAIL; not accepted | [RI-01](evidence/transcripts-2026-10-18-T5/RI-01.md), [RI-02](evidence/transcripts-2026-10-18-T5/RI-02.md) |
 | R1 | 26 Oct 2026 | v1.7.0 | `claude-opus-5-5` | `claude-sonnet-5-5` | 64,000 | Scorer RI-01 FAIL, RI-02 PASS; after review both FAIL (K1, K3); not accepted | [RI-01](evidence/transcripts-2026-10-26-R1/RI-01.md), [RI-02](evidence/transcripts-2026-10-26-R1/RI-02.md) |
 | R2 | 25 Nov 2026 | v1.9.0 | `claude-opus-5-5` | `claude-sonnet-5-5` | 64,000 | Scorer RI-01 FAIL (1 of 2 samples PASS), RI-02 FAIL, RI-03 FAIL; after review all FAIL (K7, K8); not accepted | [evidence/transcripts-2026-11-25-R2/](evidence/transcripts-2026-11-25-R2/README.md) |
+| R3 | 26 Nov 2026 | v1.10.0 | `claude-opus-5-5` | `claude-sonnet-5-5` | 64,000 | Scorer RI-01 FAIL (1 of 2 samples PASS), RI-02 PASS, RI-03 PASS, RI-04 PASS (3 of 3, critical); after review RI-01 FAIL (K9), the others PASS; not accepted | [evidence/transcripts-2026-11-26-R3/](evidence/transcripts-2026-11-26-R3/README.md) |
 
 ---
 

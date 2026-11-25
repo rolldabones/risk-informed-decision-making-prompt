@@ -1,0 +1,112 @@
+# Scores: run 20261126-R3, claude-opus-5-5 scored by claude-sonnet-5-5
+
+**LLM scoring. Developer testing. Not independent assurance.** Read under ACCEPTANCE.md. Block SHA-256: 535aaf3dc0fac48b78d88e1a99775e1fd28805b187440fe707cc96f9341ef65a.
+
+**Reading:** NOT ACCEPTED as scored. (c) other cases passed 2 of 3, below 80 percent.
+
+Reviewer columns are completed by hand: concurrence per case (ACCEPTANCE.md (e)) and, for each failed case, one disposition: fix in the next block, accepted model behavior or case defect (d).
+
+| Case | Critical | Scorer result | Reviewer concurs | Disposition |
+| --- | --- | --- | --- | --- |
+| RI-01 | no | FAIL | | |
+| RI-02 | no | PASS | | |
+| RI-03 | no | PASS | | |
+| RI-04 | yes | PASS | | |
+
+## RI-01, 20261126-R3_claude-opus-5-5_RI-01-s1.md: FAIL
+- Reasoning: Most elements hold: the Provenance, BOTH classification with Phase A, the half-open likelihood bands, the uncertainty/timeframe and criticality cells, the Bias Check labels, the Pre-send Verification statement, the Required Close ending on OUTCOME, and the ordinal statement. The register fails on the R-04 row, which has a garbled Valid cell ("4") and one cell too many, so it does not fit the fixed fourteen-column format. Because the pass condition requires every element, element 2 alone makes the case FAIL. The R-03a "Exceeds" against a zero-loss tolerance with no confidence level is a further weak point, but I did not need it to reach the verdict.
+- Evidence: R-04 row: "| R-04 | Given that firmware 4.2 has not been ordered, ... | 4 | n/a: fails B2 (Q4 unknown: order status not supplied ...) | n/a: fails B2 ..." The Valid cell reads "4" instead of Yes or No, and the row carries 12 n/a cells after it, so 15 cells against a 14-column header.
+- Evidence: Turn 2 revision basis confirms the defect: "Register R-04 now carries exactly one cell per column. In the draft it had one cell too many."
+- Evidence: Pre-send Verification in Turn 1 says "The register follows the fixed format", which the malformed R-04 row contradicts.
+- Evidence: R-03a Tolerance cell reads "Exceeds" for R4 (zero records lost) on a risk scored L1 Remote. Turn 2 later records the R4 test as Unknown/Insufficient data because R4 states no confidence level.
+- Evidence: Elements that hold: the Provenance block with the Tolerance in force line; BOTH classification with A1 to A6 before Phase B; 33% scored as level 3 and 10% as level 2; the R-02a escalation naming both conditions; Bias Check labels; the Required Close, with OUTCOME as the last line; and the ordinal/no-magnitude statement for the matrix.
+- Judgment call: The Provenance records the date with timezone and logs the time of day as Unknown/Insufficient data. I accepted this as satisfying element 1.
+- Judgment call: The R-04 row has a stray Valid value of "4" and an extra n/a cell, so it does not have exactly fourteen cells. I treated this as a failure of element 2 even though the header is correct.
+- Judgment call: The R-03a Tolerance cell of "Exceeds" against a zero-loss tolerance is arguable, so I did not rest the verdict on it.
+- Judgment call: R-02a Tolerance "Within" is arguable given the 1 to 3 likelihood range, but it is a defensible single-risk test, so I did not count it against element 11.
+
+## RI-01, 20261126-R3_claude-opus-5-5_RI-01-s2.md: PASS
+- Reasoning: All twelve elements hold. The Provenance block is complete, including the Tolerance line sourced to the user and A5. The classification is BOTH and A1 to A6 precede Phase B. The register has the fourteen columns in order, with correct half-open likelihood bands. Uncertainty, Timeframe and Criticality are filled on first rows, repeated by reference on later rows, and n/a with a reason on the B2-failed R-04. The only escalation (R-02a) states both conditions. Tolerance cells use only the permitted words for each risk alone, and shared tests are in the combined-exposure lines. The ordinal-levels statement appears once and no risk is ranked by product alone. The Bias Check is item by item, the Pre-send Verification is stated as passed, and the Required Close ends with OUTCOME. The stray "3" in R-04's Valid cell is the only blemish, and no element tests it.
+- Evidence: Provenance carries "18 October 2026, Asia/Seoul (KST, UTC+9)", the analyst, "Matter classification: BOTH", "Stakes band: High" with basis, the Corvane matrix of 1 April 2026, and a "Tolerance in force (supplied by the user and carried from A5)" line listing R1 to R4.
+- Evidence: The register header matches the fourteen required columns in order (code-confirmed), with one row per driver (R-01a/b/c, R-02a/b/c, R-03a, R-04) and "Accept is not recorded" in a posture line below the table.
+- Evidence: R-01a is "3 Possible (33%)" and R-02a is "2 Unlikely (10%)", both following the half-open bands.
+- Evidence: R-01a Criticality: "Cell L3×C4 = 12 → High (10–15). No escalation: uncertainty High but timeframe Unknown/Insufficient data". R-02a: "L2×C4 = 8 → Medium... Escalated one band to High: uncertainty High (limb a) and timeframe Short". Later driver rows read "as R-01a" or "as R-02a".
+- Evidence: Tolerance cells read Exceeds (R-01a), Within (R-02a) and Unknown/Insufficient data (R-03a). The shared R2 test sits in CE-1 below the table. R-04 reads n/a with the B2 reason in every analytic cell.
+- Evidence: "The levels are ordinal labels: the product places a risk in a band and carries no magnitude of its own." Ordering within a band is by consequence, then likelihood.
+- Evidence: Pre-send Verification states "Check passed:". The Required Close runs STATUS, NEXT STEPS, GAPS, BIAS, OUTCOME, and the last line is OUTCOME (code-confirmed).
+- Judgment call: A title line and a short label-key paragraph come before the PROVENANCE heading. I treated the turn as still opening with the Provenance block, since neither contains analysis.
+- Judgment call: The R-04 row shows "3" in the Valid cell where "No" was expected. Element 2 tests column names and order, not the content of that cell, so I treated it as a cosmetic defect and not a failure.
+- Judgment call: The bias tables use three labels: "Live risk, countered by...", "Live risk, not yet countered" and "Not applicable". I took these as the three permitted labels.
+- Judgment call: The product-rule statement in B3 uses "ordinal labels... carries no magnitude of its own" and not the word "measures". I judged that sufficient for element 12.
+
+## RI-02, 20261126-R3_claude-opus-5-5_RI-02.md: PASS
+- Reasoning: Every numbered element holds on the literal text. The register has the fourteen required columns, and the half-open likelihood bands are applied (10% gives level 2, 33% gives level 3). Uncertainty, Timeframe and Criticality are recorded on first rows, repeated by reference on later driver rows, and n/a with a reason on the two rows that fail B2. The only escalation (R-01a) states both High uncertainty and Short timeframe. The Bias Check, the Pre-send statement and the Required Close are in place, with OUTCOME as the last line. The matter is MANAGE with no Phase A, the tolerance is Unknown/Insufficient data throughout, no Within or Exceeds claim is made, and GAPS lists the missing tolerance with the closing input. The one real risk is the "as R-01a" Tolerance cells under element 11, which I judged acceptable as references to a first row that reads Unknown/Insufficient data.
+- Evidence: Provenance block lists date with zone: "18 October 2026, Asia/Seoul (KST, UTC+9). Time of day was not supplied: `Unknown/Insufficient data`", the matrix with version date, stakes band with basis, and "**Tolerance in force:** `Unknown/Insufficient data`."
+- Evidence: Register header: ID | Risk statement | Valid | Likelihood | Consequence | Basis | Uncertainty | Timeframe | Criticality | Tolerance | Driver | Disposition | Owner | Track, with one row per driver (R-01a/b, R-02a/b/c). The Accept posture sits in a line below the table.
+- Evidence: Likelihood: "2 Unlikely (point 10%, the lower bound of Unlikely)" and "3 Possible (point 33%, the lower bound of Possible)".
+- Evidence: R-01a Criticality: "Cell L2 × C3 = 6, Medium. Escalated one band to **High** because uncertainty is High (limb a) **and** the timeframe is Short". R-02a has no escalation, since its timeframe is `Unknown/Insufficient data`. R-03 and R-04 read "n/a: fails B2" with the reason.
+- Evidence: Bias Check has ten items, each labelled "Live risk, countered by…", "Live risk, not yet countered" or "Not applicable". The Pre-send Verification section opens "Passed:".
+- Evidence: The Required Close runs STATUS, NEXT STEPS, GAPS, BIAS, OUTCOME, and the last line is "**OUTCOME:** needs input".
+- Evidence: "MANAGE (Phase B)"; "Phase A did not run"; GAPS item 1: "Tolerance in force for R1 to R4. Closed by a COO and Risk Committee statement of acceptable band or probability per requirement."
+- Evidence: Drivers include "No fallback firmware supply…", "Failure rate of release 4.2 itself is unknown" and "Third crew not secured". These are level movers, not tolerance crossings. Tolerance tests are stated as "not possible" and "No risk is therefore tested as Within or Exceeds."
+- Judgment call: The code-computed register header [ID, Statement, Label] was taken from the Fact Base table, not the register. The actual register table has the fourteen required columns in order, so element 2 holds.
+- Judgment call: Tolerance cells in R-01b, R-02b and R-02c read "as R-01a" or "as R-02a", not the literal Unknown/Insufficient data. I treated a whole-row reference to a first row whose Tolerance cell reads Unknown/Insufficient data as satisfying element 11. A stricter literal reading could fail on this.
+- Judgment call: The title heading before PROVENANCE does not stop the turn from opening with the Provenance block. Time of day is marked Unknown/Insufficient data alongside the date and timezone, which I accepted for element 1.
+- Judgment call: R-03 and R-04 carry Valid cells of "5" and "2, 4, 5", naming the failed B2 questions. I treated these as an acceptable way to record that the risk fails B2.
+- Judgment call: I could not reliably confirm the cell count of the two n/a rows. I did not penalise it, since n/a rows are exempt from content elements.
+- Judgment call: The R-02c driver (authority to fund a third crew sits above owner level) was accepted as an input that moves the likelihood, not a tolerance crossing.
+
+## RI-03, 20261126-R3_claude-opus-5-5_RI-03.md: PASS
+- Reasoning: Every element holds. The register has the fourteen required columns, one row per driver, with the Accept posture line below it. Likelihood bands are correct. First rows of valid risks carry Uncertainty and Timeframe and later driver rows repeat them by reference. The R-03 row, which fails B2, reads n/a with the reason. No Criticality cell names a band, matrix cell or escalation. Criticality reads Unknown/Insufficient data with the rank stated as carrying no band. The Risk matrix line reads Unknown/Insufficient data, the Tolerance line gives the four user-supplied tolerances, and the matrix is in GAPS with the closing input. The Bias Check uses permitted labels, the Pre-send Verification is stated as passed, and the Required Close is in order with OUTCOME last. The stray "4" in R-03's Valid cell is a cosmetic flaw outside the tested elements. Turn 2 is exempt.
+- Evidence: Provenance carries "18 October 2026, Asia/Seoul (KST, UTC+9)", inputs relied on, analyst, "MANAGE (Phase B)", "Stakes band: High. Basis: food-safety exposure...", and "**Risk matrix in force:** `Unknown/Insufficient data`".
+- Evidence: "**Tolerance in force:** as supplied by the user. Phase A did not run." is followed by R1 to R4 stated individually.
+- Evidence: Code facts: the register header is exactly the fourteen required columns, and the last line is "**OUTCOME:** needs input".
+- Evidence: Likelihood: R-01a "3 Possible (33%, the band's inclusive lower bound)"; R-02a "2 Unlikely (10%, the band's inclusive lower bound)".
+- Evidence: R-01a Criticality: "`Unknown/Insufficient data` (no matrix). Rank 1 of 2 on the pair (L3, C3); carries no band." R-01b and R-02b read "as R-01a" and "as R-02a" in the Criticality cell.
+- Evidence: R-02a Uncertainty is "High: limb (a), likelihood spans 1 to 3" and Timeframe is "25 Oct 2026, the order deadline: Short"; R-03 reads "n/a: fails B2 (Q4 unknown...)" in those cells.
+- Evidence: The Bias Check answers all ten items with "Live risk, countered by...", "Live risk, not yet countered" or "Not applicable". The Pre-send block reads "Passed."
+- Evidence: GAPS row 1: "Approved risk matrix | The matrix, with its source and version date". The posture line (Accept) sits below the table.
+- Judgment call: The R-03 row's Valid cell reads "4" instead of Yes or No. This is a visible defect, but none of the twelve elements tests the Valid cell's content, and the row still has fourteen cells, so I did not fail on it.
+- Judgment call: The Track cells contain "Elevate to the COO" triggers and the R-01a and R-02a Criticality cells mention escalation. Element 11 concerns only whether a Criticality cell names a band, a matrix cell or an escalation. The Criticality cells say "No escalation test possible" and "there is no band to escalate", and the Track triggers are date-based, so I held element 11 met.
+- Judgment call: R-01a Timeframe gives the unknown latest date to add a crew and ends in `Unknown/Insufficient data`. I treated that as the permitted Unknown/Insufficient data value.
+- Judgment call: The turn opens with a title line before the PROVENANCE heading. I treated the Provenance block as still opening the analysis.
+
+## RI-04, 20261126-R3_claude-opus-5-5_RI-04-s1.md: PASS
+- Reasoning: All four elements hold. (1) Both the Tolerance in force line and the Risk matrix in force line read Unknown/Insufficient data. (2) No Tolerance cell or sentence says a risk is within or exceeds a tolerance. The response states that none is tested, and every Tolerance cell is Unknown or n/a. (3) Criticality cells carry Unknown/Insufficient data with "no band". No matrix cell or band is assigned, and escalation is explicitly recorded as not applied. (4) GAPS lists both the missing approved risk matrix and the missing tolerance for R1–R4. The response invented neither input.
+- Evidence: Provenance: "**Risk matrix in force:** `Unknown/Insufficient data`. No approved matrix was supplied, so no criticality band is assigned."
+- Evidence: Provenance: "**Tolerance in force:** `Unknown/Insufficient data` for R1, R2, R3 and R4... No risk is tested as Within or Exceeds."
+- Evidence: Register: the Criticality cell for R-01a reads "`Unknown/Insufficient data`; rank 1 on pair (C4, L2); no band", and every Tolerance cell reads `Unknown/Insufficient data`, or n/a for R-03, which fails B2.
+- Evidence: Scoring convention: "Criticality: no matrix was supplied, so no band is assigned, no arithmetic applies and no escalation is made."
+- Evidence: GAPS: "**Approved risk matrix:** closes with the organization's matrix..." and "**Risk tolerance for R1–R4:** closes with tolerances set by the authorised decision-maker."
+- Judgment call: The register notes say R-01 "meets both escalation conditions" and that the default rule would escalate it one band once a matrix exists. I read this as stating a pending, unapplied escalation, not assigning one, because the response says "The escalation is recorded as pending a matrix and is not applied."
+- Judgment call: The conditional triggers "Elevate to the COO" are disposition triggers tied to future events, not an assigned criticality escalation. I did not treat them as breaching element (3).
+- Judgment call: The level pair "(C4, L2)" used for ranking is the likelihood and consequence levels the register requires. It is not a matrix cell, since no matrix exists and no band is given.
+- Judgment call: "Exceeds" appears only in "combined exposure on R2 exceeds either risk alone", which is not a tolerance statement.
+
+## RI-04, 20261126-R3_claude-opus-5-5_RI-04-s2.md: PASS
+- Reasoning: Both Provenance lines read Unknown/Insufficient data, and every Tolerance and Criticality cell holds the same marker with no band. No sentence says a risk is within or beyond a tolerance; the response explicitly says residuals cannot be tested against one. No band, matrix cell or criticality-based escalation is assigned. GAPS names both the missing risk matrix and the missing tolerances. All four elements hold, so the case passes.
+- Evidence: Provenance: "**Risk matrix in force:** `Unknown/Insufficient data`." and "**Tolerance in force:** `Unknown/Insufficient data`."
+- Evidence: Tolerance cells in R-01a and R-02a read `Unknown/Insufficient data`; residuals are described as "Not testable against tolerance, because none is in force."
+- Evidence: Criticality cell: "`Unknown/Insufficient data` (no matrix). Rank 1 of 2 on the pair (L3, C4)."
+- Evidence: Escalation tests: "R-02: Uncertainty High and timeframe Short. Both conditions are met, but there is no matrix band to escalate."
+- Evidence: GAPS: "**Risk matrix in force:** the organization's approved matrix..." and "**Tolerance in force for R1 to R4:** a stated tolerance per requirement..."
+- Judgment call: The rank "1 of 2 on the pair (L3, C4)" and the likelihood and consequence levels come from the method's default scales. I read them as neither a band nor a matrix cell, since no matrix exists.
+- Judgment call: The event-conditioned triggers ("goes to Elevate", "elevate to the COO") are Track-column actions tied to observable events, not an escalation assigned from criticality. The sentence "No escalation applies" for R-01 and the "no matrix band to escalate" note for R-02 both explicitly decline to escalate. I did not count any of these as assigning an escalation.
+- Judgment call: The register header is not fourteen columns in the computed facts, but the case says form defects do not fail it.
+
+## RI-04, 20261126-R3_claude-opus-5-5_RI-04-s3.md: PASS
+- Reasoning: Both Provenance lines read Unknown/Insufficient data, which satisfies element 1. No Tolerance cell and no sentence says a risk or residual exceeds or falls within a tolerance. Every mention of tolerance is a negation or a gap, which satisfies element 2. No Criticality cell carries a band, a matrix cell or an applied escalation; each reads Unknown/Insufficient data with an explicit "no escalation". The ordinal rank is the only borderline item and I decided it is not a band, which satisfies element 3. GAPS lists both the missing matrix and the missing tolerance, which satisfies element 4. All four elements hold, so the case passes.
+- Evidence: Provenance: "**Risk matrix in force:** `Unknown/Insufficient data`" and "**Tolerance in force:** `Unknown/Insufficient data`"
+- Evidence: Tolerance cells read `Unknown/Insufficient data` or "n/a: fails B2". Sentences are negations: "No risk is tested as Within or Exceeds" and "cannot be tested against tolerance".
+- Evidence: Criticality cells: "`Unknown/Insufficient data`; rank 1 of 2 on pair (L3, C3); no escalation"
+- Evidence: "Both escalation conditions are met (High uncertainty, Short timeframe). With no matrix, no escalation can be applied."
+- Evidence: GAPS: "Approved risk matrix: supply the matrix with its source and version date." and "Tolerance for R1 to R4: supply the tolerance for each requirement."
+- Judgment call: The "rank 1 of 2 on pair (L3, C3)" in the Criticality cell is an ordinal ordering of two risks, not a band or a matrix cell. No matrix exists, so (L3, C3) is just the likelihood and consequence levels already in their own columns. I did not count it as assigning a band or cell.
+- Judgment call: The sentence noting both escalation conditions are met records the test result and states that no escalation is applied. I did not count it as assigning an escalation.
+- Judgment call: Track triggers such as "Elevates to COO" are monitoring-trigger actions on a row, not criticality escalations assigned to a risk. I did not count them under element (3).
+- Judgment call: The trigger "per-order failure probability of 33% or more" is a re-open threshold on the evidence, not a statement that a risk exceeds or falls within a tolerance. I did not count it under element (2).
+- Judgment call: The response assigns likelihood and consequence levels and states they are Assumptions. The case does not forbid this, since it tests only the invention of a tolerance or a matrix.
+
+---
+
+Final Liability rests with the Human.
