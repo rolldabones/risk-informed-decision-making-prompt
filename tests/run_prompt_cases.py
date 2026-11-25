@@ -59,8 +59,8 @@ RUNS_DIR = REPO_ROOT / "tests" / "prompt-runs"
 TRANSCRIPTS_DIR = RUNS_DIR / "transcripts"
 DEFAULT_MODEL = "claude-opus-5-5"
 DEFAULT_MAX_TOKENS = 64000
-EXPECTED_CASES = 3
-EXPECTED_CRITICAL = 2
+EXPECTED_CASES = 4
+EXPECTED_CRITICAL = 1
 KST = datetime.timezone(datetime.timedelta(hours=9))
 CASE_RE = re.compile(r"^## Case (RI-\d+): (.+)$", re.MULTILINE)
 SAMPLES_RE = re.compile(r"^Samples: (\d+)\.$", re.MULTILINE)

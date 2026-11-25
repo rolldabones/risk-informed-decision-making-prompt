@@ -2,9 +2,9 @@
 
 *Human-made, for Easy Work, Simply Done*
 
-**Version 1.9.1 · 2026-11-25 · License: [CC BY-NC-SA 4.0](LICENSE.md) · Changes: [CHANGELOG.md](CHANGELOG.md)**
+**Version 1.10.0 · 2026-11-25 · License: [CC BY-NC-SA 4.0](LICENSE.md) · Changes: [CHANGELOG.md](CHANGELOG.md)**
 
-**Acceptance status at version 1.9.1 ([ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 25 November 2026, KST):** Not accepted. Run R2 (25 November 2026) of prompt v1.9.0 passed 0 of 3 cases after review. The rule against supplying a missing tolerance or risk matrix held in both critical cases; every case failed on the register's form: a Tolerance cell carrying more than its label (K7) and the cells of a row whose risk fails B2 (K8). No version of the prompt has an accepted run. The account's status table is in [ECOSYSTEM.md](https://github.com/rolldabones/rolldabones/blob/main/ECOSYSTEM.md#instrument-status).
+**Acceptance status at version 1.10.0 ([ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 25 November 2026, KST):** Not accepted: the published prompt fixes in the text the two form defects of run R2, a Tolerance cell carrying more than its label (K7) and the cells of a row whose risk fails B2 (K8), and has no logged run; its run is due at Test Thursday on 26 November 2026. Run R2 (25 November 2026) of the prompt before it passed 0 of 3 cases after review; the rule against supplying a missing tolerance or risk matrix held in both critical cases. No version of the prompt has an accepted run. The account's status table is in [ECOSYSTEM.md](https://github.com/rolldabones/rolldabones/blob/main/ECOSYSTEM.md#instrument-status).
 
 A model-agnostic working prompt for decision making and risk management under uncertainty, tuned for frontier-class models. The current prompt text was run once, in run R2 (25 November 2026), and not accepted; its suite is [tests/prompt-cases.md](tests/prompt-cases.md) and its record is [tests.md](tests.md), which names the prompt version each run tested. Two earlier texts were tested on `claude-opus-5-5`, in runs T5 (18 October 2026) and R1 (26 October 2026); neither was accepted.
 
@@ -27,7 +27,7 @@ The prompt runs on less and says what it lacked. Two runs can be compared only w
 
 Anything not supplied is marked `Unknown/Insufficient data` and listed under GAPS with the input that would close it; the model does not fill it in. Phase B returns its risks in the fixed register format the prompt specifies, so registers from two runs line up in format, column by column. [examples/sample-run-transcript.md](examples/sample-run-transcript.md) shows a full run on a fictional matter, and [tests.md](tests.md) records where that run and a second one departed from the format.
 
-**Known defects.** Prompt v1.8.0 fixes in the text the six defects listed in [tests.md](tests.md) section 4. The Tolerance cell tests a risk alone, and a shared tolerance is tested in aggregate below the table (K1). A later driver row repeats its first row by reference (K2). OUTCOME is the last line of every response, and the closing line sits outside the loaded text (K3). B5 names B3 and B4 (K4). The Scoring Convention sentence is an instruction (K5). Accept is recorded once, for the overall posture (K6). In run R2 (25 November 2026) OUTCOME was the last line of every scored turn (K3) and later driver rows repeated by reference (K2), while Tolerance cells still carried more than their label (K7, [tests.md](tests.md) section 4). Read output on those points with care.
+**Known defects.** Prompt v1.8.0 fixes in the text the six defects listed in [tests.md](tests.md) section 4. The Tolerance cell tests a risk alone, and a shared tolerance is tested in aggregate below the table (K1). A later driver row repeats its first row by reference (K2). OUTCOME is the last line of every response, and the closing line sits outside the loaded text (K3). B5 names B3 and B4 (K4). The Scoring Convention sentence is an instruction (K5). Accept is recorded once, for the overall posture (K6). In run R2 (25 November 2026) OUTCOME was the last line of every scored turn (K3) and later driver rows repeated by reference (K2), while Tolerance cells still carried more than their label (K7, [tests.md](tests.md) section 4). Prompt v1.10.0 fixes K7 and K8 in the text, untested until a logged run. Read output on those points with care.
 
 ## What's in this repository
 
@@ -35,7 +35,7 @@ Anything not supplied is marked `Unknown/Insufficient data` and listed under GAP
 | --- | --- |
 | [risk-informed-prompt.md](risk-informed-prompt.md) | The full working prompt. Copy everything between its first and its last horizontal rule. |
 | [tests.md](tests.md) | The acceptance status, the Critical cases line, the runs logged so far, the known defects and the run log. |
-| [tests/](tests/prompt-cases.md) | The suite, three cases with their literal run inputs, and the harness that runs and scores it. |
+| [tests/](tests/prompt-cases.md) | The suite, four cases with their literal run inputs, and the harness that runs and scores it. |
 | [examples/sample-run-transcript.md](examples/sample-run-transcript.md) | One generated run on a fictional matter, input and output verbatim. It failed its case on two named elements and is not an exemplar. |
 | evidence/ | The transcripts of every logged run, copied byte for byte: [run T5](evidence/transcripts-2026-10-18-T5/README.md) and [run R1](evidence/transcripts-2026-10-26-R1/README.md). |
 | [CHANGELOG.md](CHANGELOG.md) | Version history. |
@@ -53,7 +53,7 @@ Nearest neighbors:
 
 ## How to Cite
 
-> Paik, Son-U Michael. *Risk-Informed Decision Making and Continuous Risk Management*, v1.9.1. GRC Solutions Korea, 2026. https://github.com/rolldabones/risk-informed-decision-making-prompt
+> Paik, Son-U Michael. *Risk-Informed Decision Making and Continuous Risk Management*, v1.10.0. GRC Solutions Korea, 2026. https://github.com/rolldabones/risk-informed-decision-making-prompt
 
 A machine-readable citation is in [CITATION.cff](CITATION.cff).
 

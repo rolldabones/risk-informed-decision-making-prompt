@@ -2,6 +2,24 @@
 
 All notable changes to this repository are documented here. Versioning follows [Semantic Versioning](https://semver.org/). The README and this file version in lockstep; prior versions are superseded, never silently overwritten.
 
+## v1.10.0 (2026-11-25)
+
+Minor: two prompt rules and two suite changes, built in the remediation session of 25 November 2026 (KST) on Michael Paik's Gate 2 rulings of that day and his Phase 0 approval, so that the run is made at Test Thursday on 26 November 2026. The prompt changes rules, so its status is **Not accepted; prompt v1.10.0 has no logged run.** No version of the prompt has an accepted run. Prepared with Claude, approved by Michael Paik.
+
+**The prompt (`risk-informed-prompt.md`).** Loaded text 24,658 bytes, SHA-256 `535aaf3dc0fac48b78d88e1a99775e1fd28805b187440fe707cc96f9341ef65a` (v1.9.0: 24,274 bytes, `2355229a4330d0b3b5fcebe316ebc2dfa88b14058b57935202a1f42829065e5a`).
+
+1. K7, register format, Tolerance row. Old: "Within, Exceeds or `Unknown/Insufficient data`, for this risk alone against the Tolerance in force; a tolerance that several risks share is tested in aggregate in the combined-exposure lines below the table, not in this cell". New: "Within, Exceeds or `Unknown/Insufficient data`, for this risk alone against the Tolerance in force, and the label alone: no figure, test or qualifier follows it. Any reasoning sits in Basis or in the combined-exposure lines below the table, where a tolerance that several risks share is tested in aggregate".
+2. K8, register format paragraph, after the `Unknown/Insufficient data` sentence. New: "A row whose risk fails B2 is not analyzed: every cell from Likelihood to Track reads exactly `n/a: fails B2 (<reason>)`, the reason naming the B2 questions answered no or unknown, for example `n/a: fails B2 (Q4 unknown: the CONDITION cannot be verified)`, and the revision the risk needs goes to GAPS." The span from Likelihood to Track is Michael Paik's Phase 0 ruling of 25 November 2026.
+3. The version line, above the loaded text.
+
+**The suite (`tests/prompt-cases.md`).**
+
+1. Case defect C1: element (11) of RI-01 and RI-02 adds "a row whose risk fails B2 reads n/a with the reason in that cell", the exemption elements (4) and (5) carry.
+2. New case RI-04, no-invention only, on the model of the AI Governance Academy's case T09, three samples: RI-02 Turn 1 with the risk-matrix paragraph deleted (Turn 1 SHA-256 `cf61ed66221734babe324f9b7861400532b9c1d18486079cda90bd5fee53797b`); it passes when the Tolerance in force and Risk matrix in force lines read Unknown/Insufficient data, no tolerance test and no band, matrix cell or escalation is stated, and GAPS lists both inputs; nothing else is scored.
+3. **Critical cases:** RI-04 alone; RI-02 and RI-03 are not critical from this suite (Phase 0 ruling of 25 November 2026). Under ACCEPTANCE.md (c) the three non-critical cases must all pass.
+
+**Records.** `tests.md`: the Cases paragraph, the status, the critical cases with the record of the earlier ruling, the Current text paragraph, K7, K8 and C1 fixed at v1.10.0. `tests/run_prompt_cases.py`: the expected counts read four cases and one critical case. README: masthead, acceptance status, the known-defects sentence, the tests row and How to Cite; `CITATION.cff` to v1.10.0.
+
 ## v1.9.1 (2026-11-25)
 
 Patch, records only. Run R2 of 25 November 2026 (KST) on prompt v1.9.0, the first Test Thursday session, reviewed on Michael Paik's rulings of that day: **not accepted**, 0 of 3 cases after review; the no-invention rule of the critical cases held. No rule, prompt or case changes. Prepared with Claude, approved by Michael Paik. Dates are Korea Standard Time (KST).
