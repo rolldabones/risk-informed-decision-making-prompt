@@ -2,6 +2,14 @@
 
 All notable changes to this repository are documented here. Versioning follows [Semantic Versioning](https://semver.org/). The README and this file version in lockstep; prior versions are superseded, never silently overwritten.
 
+## v1.9.1 (2026-11-25)
+
+Patch, records only. Run R2 of 25 November 2026 (KST) on prompt v1.9.0, the first Test Thursday session, reviewed on Michael Paik's rulings of that day: **not accepted**, 0 of 3 cases after review; the no-invention rule of the critical cases held. No rule, prompt or case changes. Prepared with Claude, approved by Michael Paik. Dates are Korea Standard Time (KST).
+
+- **`tests.md`:** the status; run R2 recorded above run R1 with its configuration, session review (one dissent to FAIL, RI-01 sample 2) and counts; the Current text paragraph; known defects K7 (the Tolerance cell carries more than its label) and K8 (a row whose risk fails B2), and case defect C1 (element (11) lacks the B2 exemption); the run log row.
+- **`evidence/transcripts-2026-11-25-R2/`** (new): four transcripts, the run manifest, the scores and a README.
+- **README:** masthead, acceptance status, the current-text sentence, the repeatability sentence, the known-defects paragraph and How to Cite; `CITATION.cff` to v1.9.1.
+
 ## v1.9.0 (2026-11-23)
 
 Minor, because a rule in the working prompt changes what a run must produce. Second release of the day, in a remediation session Michael Paik opened after the Monday run on the Guild House evaluation of 23 November 2026, ruling 1 (a completion under `account-maintenance` HANDBOOK.md section 9), approved by Michael Paik the same day. Prepared with Claude, approved by Michael Paik. Dates are Korea Standard Time (KST). **Status: not accepted; prompt v1.9.0 has no logged run; run due 26 November 2026 (Test Thursday), which now runs v1.9.0 in place of v1.8.0.**
