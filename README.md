@@ -1,10 +1,12 @@
 # Risk-Informed Decision Making and Continuous Risk Management
 
+> **Archived edition of 26 November 2026.** This repository is archived and read-only. It receives no corrections, legal ones included: verify every statement of law, regulation or standard against a current primary source before you rely on it. What I maintain, and why this repository is not part of it, is in [DISPOSITION.md](https://github.com/rolldabones/rolldabones/blob/main/DISPOSITION.md). Cite this edition as *Risk-Informed Decision Making and Continuous Risk Management*, v1.10.2 (26 November 2026). The license and [LICENSING.md](https://github.com/rolldabones/rolldabones/blob/main/LICENSING.md) still apply. Reach me at sonupaik@gmail.com. Its last test is stated under Last test below.
+
 *Human-made, for Easy Work, Simply Done*
 
-**Version 1.10.1 · 2026-11-26 · License: [CC BY-NC-SA 4.0](LICENSE.md) · Changes: [CHANGELOG.md](CHANGELOG.md)**
+**Version 1.10.2 · 2026-11-26 · Archived edition · License: [CC BY-NC-SA 4.0](LICENSE.md) · Changes: [CHANGELOG.md](CHANGELOG.md)**
 
-**Acceptance status at version 1.10.1 ([ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 26 November 2026, KST):** Not accepted: run R3 (26 November 2026) of the published prompt passed the critical case, which tests that a missing tolerance or risk matrix is never supplied, in all three samples, and 2 of the 3 other cases after review (66.7 percent, below the 80 percent required). Both fixes of the text held, a Tolerance cell holding its label alone (K7) and the form of a row whose risk fails B2 (K8); one case failed because such a row carried one cell too many (K9). Run R2 (25 November 2026) of the prompt before it passed 0 of 3 cases after review; the rule against supplying a missing tolerance or risk matrix held in both critical cases. No version of the prompt has an accepted run. The account's status table is in [ECOSYSTEM.md](https://github.com/rolldabones/rolldabones/blob/main/ECOSYSTEM.md#instrument-status).
+**Last test, as this edition (v1.10.2) records it ([ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 26 November 2026, KST):** Not accepted: run R3 (26 November 2026) of the published prompt passed the critical case, which tests that a missing tolerance or risk matrix is never supplied, in all three samples, and 2 of the 3 other cases after review (66.7 percent, below the 80 percent required). Both fixes of the text held, a Tolerance cell holding its label alone (K7) and the form of a row whose risk fails B2 (K8); one case failed because such a row carried one cell too many (K9). Run R2 (25 November 2026) of the prompt before it passed 0 of 3 cases after review; the rule against supplying a missing tolerance or risk matrix held in both critical cases. No version of the prompt has an accepted run. Run on `claude-opus-5-5` and scored by `claude-sonnet-5-5`. No later run exists and none will be made. The run record and the known defects are in [`tests.md`](tests.md), and the transcripts stay in this repository where that file links them, frozen at tag v1.10.2; ask at sonupaik@gmail.com. The account's status table is in [ECOSYSTEM.md](https://github.com/rolldabones/rolldabones/blob/main/ECOSYSTEM.md#instrument-status).
 
 A model-agnostic working prompt for decision making and risk management under uncertainty, tuned for frontier-class models. The current prompt text was run once, in run R2 (25 November 2026), and not accepted; its suite is [tests/prompt-cases.md](tests/prompt-cases.md) and its record is [tests.md](tests.md), which names the prompt version each run tested. Two earlier texts were tested on `claude-opus-5-5`, in runs T5 (18 October 2026) and R1 (26 October 2026); neither was accepted.
 
@@ -53,7 +55,7 @@ Nearest neighbors:
 
 ## How to Cite
 
-> Paik, Son-U Michael. *Risk-Informed Decision Making and Continuous Risk Management*, v1.10.1. GRC Solutions Korea, 2026. https://github.com/rolldabones/risk-informed-decision-making-prompt
+> Paik, Son-U Michael. *Risk-Informed Decision Making and Continuous Risk Management*, v1.10.2. GRC Solutions Korea, 2026. https://github.com/rolldabones/risk-informed-decision-making-prompt
 
 A machine-readable citation is in [CITATION.cff](CITATION.cff).
 

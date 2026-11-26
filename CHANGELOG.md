@@ -2,6 +2,14 @@
 
 All notable changes to this repository are documented here. Versioning follows [Semantic Versioning](https://semver.org/). The README and this file version in lockstep; prior versions are superseded, never silently overwritten.
 
+## v1.10.2 (2026-11-26)
+
+Final release: the archived edition. On Michael Paik's ruling of 26 November 2026, recorded in [DISPOSITION.md](https://github.com/rolldabones/rolldabones/blob/main/DISPOSITION.md): the repository is archived in place as a dated edition and receives no corrections after this release. Prepared with Claude, approved by Michael Paik.
+
+- **README:** the archive banner under the title, with the edition date, the version to cite and where the maintained work is. Each acceptance line reads "Last test"; the status it states is unchanged, and no known defect is removed. The line says where the run record and the transcripts are and that they are frozen at this tag.
+- Nothing is removed, renamed or moved, and every other file is unchanged byte for byte.
+- README and `CITATION.cff` to v1.10.2.
+
 ## v1.10.1 (2026-11-26)
 
 Patch, records only. Run R3 of 26 November 2026 (KST), the suite for prompt v1.10.0 at Test Thursday, reviewed on Michael Paik's Gate 2 rulings of that day: **not accepted**; the critical case RI-04 passed all three samples and RI-01 failed (K9). No prompt or case text changes. Prepared with Claude, approved by Michael Paik.
